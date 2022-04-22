@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Overzicht restaurants</title>
+  </head>
+  <script>
+    // functie waar je over de array van restaurants loopt
+    fetch("http://localhost:8080/toonrestaurants/voorklant")
+      .then((Response) => Response.json())
+      .then((data) => {
+        // lopen over array en innerhhtml toevoegen
+        for (var x = 0; x < data.length; x++) {
+          document.getElementById("list").innerHTML +=
+            "<li> <p>" +
+            data[x].naam +
+            "</p> <p> <button onclick=\"menupage('" +
+            data[x].id +
+            "')\"> Menukaart </button> </p>  <p> <button onclick=\"infopage('" +
+            data[x].id +
+            "')\"> Informatie </button> </p> </li>";
+        }
+      });
+
+    function menupage(restaurantid) {
+      window.location.href = "menukaart.html?id=" + restaurantid;
+    }
+
+    function infopage(restaurantid) {
+      window.location.href = "restaurant_info.html?id=" + restaurantid;
+    }
+  </script>
+  <style>
+    div.sticky {
+      position: sticky;
+      background-color: rgb(215, 232, 238);
+      padding-top: 20px;
+      padding-bottom: 20px;
+      padding-left: 10px;
+    }
+
+    #inhoud {
+      padding-top: 40px;
+    }
+  </style>
+  <body>
+    <div class="sticky">
+      <h1>Overzicht restaurants</h1>
+    </div>
+    <div id="inhoud">
+      <ul id="list"></ul>
+    </div>
+  </body>
+</html>
