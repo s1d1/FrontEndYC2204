@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Menukaart</title>
+  </head>
+  <style>
+    div.sticky {
+      position: sticky;
+      background-color: rgb(215, 232, 238);
+      padding-top: 20px;
+      padding-bottom: 20px;
+      padding-left: 10px;
+    }
+
+    #inhoud {
+      padding-top: 40px;
+    }
+  </style>
+  <body>
+    <div class="sticky">
+      <h1 id="restaurantnaam"></h1>
+    </div>
+    <div id="inhoud">
+      <ul id="list"></ul>
+    </div>
+  </body>
+  <script>
+    //!! werkt nu met restaurant class ipv restaurantdtovoorklant class !!
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const restaurantid = urlParams.get("id");
+    fetch("http://localhost:8080/restaurantbyid/" + restaurantid)
+      .then((Response) => Response.json())
+      .then((data) => {
+        var restaurantnaam = data.naam;
+        document.getElementById("restaurantnaam").innerHTML +=
+          "Menukaart " + restaurantnaam;
+      });
+
+    // TODO: dynamisch inladen menu items met restaurantid
+    fetch("http://localhost:8080/toonmenu/" + restaurantid)
+      .then((Response) => Response.json())
+      .then((data) => {
+        for (var x = 0; x < data.length; x++) {
+          document.getElementById("list").innerHTML +=
+            "<li> <p>" +
+            data[x].naam +
+            "</p> <p>" +
+            data[x].beschrijving +
+            "</p> <button>Voeg toe aan winkelmand</button></li>";
+        }
+      });
+  </script>
+</html>

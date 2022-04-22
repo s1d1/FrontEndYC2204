@@ -7,66 +7,32 @@
     <title>Restaurantinfo</title>
   </head>
   <script>
-    function add() {
-    alert("Toegevoegd aan winkelmandje");
+    function bestelpagina() {
+      window.location.href = "menukaart.html?naam=" + restaurantnaam;
     }
-
   </script>
   <body>
-    <h1>Titel restaurant</h1>
-    <p>Omschrijving restaurant</p>
-    <h2>Menukaart</h2>
-
-    <table>
-      <tr>
-        <th>Gerecht</th>
-        <th>Prijs</th>
-        <th></th>
-      </tr>
-      <tr>
-        <td>
-          <h4>Pizza Margherita</h4>
-          <p>Pizza met tomatensaus, mozarella en bascilicum</p>
-          <p>Alergenen: gluten, melk</p>
-        </td>
-        <td>12</td>
-        <td><button onclick="add()">Toevoegen aan winkelmandje</button></td>
-      </tr>
-      <tr>
-        <td>
-          <h4>Pizza Pepperoni</h4>
-          <p>Pizza met tomatensaus, mozarella en pepperoni</p>
-          <p>Alergenen: gluten, melk</p>
-        </td>
-        <td>13</td>
-        <td><button onclick="add()">Toevoegen aan winkelmandje</button></td>
-      </tr>
-      <tr>
-        <td>
-          <h4>Pizza Quatro Formaggi</h4>
-          <p>Pizza met tomatensaus en vier soorten kaas</p>
-          <p>Alergenen: gluten, melk</p>
-        </td>
-        <td>15</td>
-        <td><button onclick="add()">Toevoegen aan winkelmandje</button></td>
-      </tr>
-      <tr>
-        <td>
-          <h4>Pizza Vegetariana</h4>
-          <p>Pizza met tomatensaus, mozarella en gegrilde groenten</p>
-          <p>Alergenen: gluten, melk</p>
-        </td>
-        <td>14,50</td>
-        <td><button onclick="add()">Toevoegen aan winkelmandje</button></td>
-      </tr>
-      <tr>
-        <td>
-          <h4>Pizza Tonno</h4>
-          <p>Pizza met tomatensaus, mozarella, tonijn en olijven</p>
-          <p>Alergenen: gluten, melk, vis</p>
-        </td>
-        <td>15</td>
-        <td><button onclick="add()">Toevoegen aan winkelmandje</button></td>
-      </tr>
+    <!-- TODO: Dynamisch inladen informatie met restaurantid -->
+    <h1>Informatie De Pizza Hut</h1>
+    <div class="restaurantblok">
+      <label>Adres: </label>
+      Adres
+      <p></p>
+      <label>Telefoonnummer: </label>
+      02074736254
+      <p></p>
+      <label>Openingstijden</label>
+      <p></p>
+      <ul>
+        <li>Maandag: 17:00 - 22:00</li>
+        <li>Dinsdag: 17:00 - 22:00</li>
+        <li>Woensdag: 17:00 - 22:00</li>
+        <li>Donderdag: 17:00 - 22:00</li>
+        <li>Vrijdag: 17:00 - 23:00</li>
+        <li>Zaterdag: 17:00 - 23:00</li>
+        <li>Zondag: 17:00 - 22:00</li>
+      </ul>
+      <button onclick="bestelpagina();">Bestel</button>
+    </div>
   </body>
 </html>
