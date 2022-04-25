@@ -7,30 +7,53 @@
     <title>Restaurantinfo</title>
   </head>
   <script>
+    // restaurantgegevens ophalen
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const restaurantid = urlParams.get("id");
+    fetch("http://localhost:8080/restaurantbyid/" + restaurantid)
+      .then((Response) => Response.json())
+      .then((data) => {
+        var restaurantnaam = data.naam;
+        var tel = data.telefoonnummer;
+        var adres = data.adres;
+        var openingstijden = data.openingstijden;
+
+        document.getElementById("naam").innerHTML += " " + restaurantnaam;
+        document.getElementById("adres").innerHTML += " " + adres;
+        document.getElementById("tel").innerHTML += " " + tel;
+        document.getElementById("opening-ma").innerHTML += " " + openingstijden;
+        document.getElementById("opening-di").innerHTML += " " + openingstijden;
+        document.getElementById("opening-woe").innerHTML +=
+          " " + openingstijden;
+        document.getElementById("opening-do").innerHTML += " " + openingstijden;
+        document.getElementById("opening-vr").innerHTML += " " + openingstijden;
+        document.getElementById("opening-za").innerHTML += " " + openingstijden;
+        document.getElementById("opening-zo").innerHTML += " " + openingstijden;
+      });
+
     function bestelpagina() {
-      window.location.href = "menukaart.html?naam=" + restaurantnaam;
+      console.log(restaurantid);
+      window.location.href = "menukaart.html?naam=" + restaurantid;
     }
   </script>
   <body>
-    <!-- TODO: Dynamisch inladen informatie met restaurantid -->
-    <h1>Informatie De Pizza Hut</h1>
+    <h1 id="naam">Informatie</h1>
     <div class="restaurantblok">
-      <label>Adres: </label>
-      Adres
+      <label id="adres">Adres:</label>
       <p></p>
-      <label>Telefoonnummer: </label>
-      02074736254
+      <label id="tel">Telefoonnummer: </label>
       <p></p>
-      <label>Openingstijden</label>
+      <label>Openingstijden:</label>
       <p></p>
       <ul>
-        <li>Maandag: 17:00 - 22:00</li>
-        <li>Dinsdag: 17:00 - 22:00</li>
-        <li>Woensdag: 17:00 - 22:00</li>
-        <li>Donderdag: 17:00 - 22:00</li>
-        <li>Vrijdag: 17:00 - 23:00</li>
-        <li>Zaterdag: 17:00 - 23:00</li>
-        <li>Zondag: 17:00 - 22:00</li>
+        <li id="opening-ma">Maandag:</li>
+        <li id="opening-di">Dinsdag:</li>
+        <li id="opening-woe">Woensdag:</li>
+        <li id="opening-do">Donderdag:</li>
+        <li id="opening-vr">Vrijdag:</li>
+        <li id="opening-za">Zaterdag:</li>
+        <li id="opening-zo">Zondag:</li>
       </ul>
       <button onclick="bestelpagina();">Bestel</button>
     </div>
