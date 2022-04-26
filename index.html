@@ -1,35 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Bezorgservice</title>
-</head>
-<body>
-    <h1>Restaurants</h1>
-    <div>
-<ul>
-    <li><h2> <a href="restaurantinfo.html">Pizzarestaurant</a></h2>
-        <img src="img/pizzatent.jpg">
-        <p>Pizzatent beschrijving</p>
-        <p>Open of dicht</p>
-    </li>
-    <li><h2> <a href="restaurantinfo.html">Pizzarestaurant</a></h2>
-        <img src="img/pizzatent.jpg">
-        <p>Pizzatent beschrijving</p>
-        <p>Open of dicht</p>
-    </li>
-    <li><h2> <a href="restaurantinfo.html">Pizzarestaurant</a></h2>
-        <img src="img/pizzatent.jpg">
-        <p>Pizzatent beschrijving</p>
-        <p>Open of dicht</p>
-    </li>
-</ul>
+  </head>
+  <style>
+    /* Lettertype */
+    @import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans&display=swap");
+    html {
+      font-family: "Plus Jakarta Sans", sans-serif;
+    }
+    /* Navbar */
+    .container--nav {
+      max-width: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: fixed;
+    }
 
-    </div>
+    .navigatie {
+      width: 100%;
+      background-color: rgba(0, 0, 0, 0.418);
+      position: fixed;
+      top: 0;
+      z-index: 9999;
+      padding-top: 15px;
+      padding-bottom: 40px;
+    }
 
+    .nav__link {
+      font-size: 1rem;
+      text-decoration: none;
+      padding: 6px 16px;
+      color: white;
+    }
 
+    .nav__link:hover {
+      text-decoration: underline;
+      color: orange;
+    }
 
-</body>
+    /* Achtergrond afbeelding */
+    header {
+      padding-top: 160px;
+      min-height: 100vh;
+      background-image: url("img/homepage.jpg");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-attachment: fixed;
+      background-size: cover;
+    }
+
+    /* Titel tekst */
+    .header__text {
+      text-align: center;
+    }
+
+    .title {
+      font-size: 80px;
+      color: white;
+    }
+  </style>
+  <body>
+    <header>
+      <div class="navigatie">
+        <div class="container container--nav">
+          <nav>
+            <a href="/index.html" class="nav__link">Home</a>
+            <a href="/overzicht-restaurants.html" class="nav__link"
+              >Overzicht Restaurants</a
+            >
+            <a href="#" class="nav__link">Winkelwagentje</a>
+            <a href="#" class="nav__link">Mijn account</a>
+            <a href="#" class="nav__link">Inloggen</a>
+          </nav>
+        </div>
+      </div>
+      <div class="header__text">
+        <h1 class="title">Bezorgservice</h1>
+      </div>
+    </header>
+  </body>
 </html>
