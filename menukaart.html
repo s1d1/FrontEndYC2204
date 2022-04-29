@@ -4,90 +4,25 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="./menukaart.js" type="module"></script>
+    <link rel="stylesheet" href="menukaart.css" />
     <title>Menukaart</title>
+    <script src="./components/bez-nav.js" type="module"></script>
+    <script src="./winkelmandje.js" type="module"></script>
   </head>
-  <style>
-    div.sticky {
-      position: sticky;
-      background-color: rgb(215, 232, 238);
-      padding-top: 20px;
-      padding-bottom: 20px;
-      padding-left: 10px;
-    }
-
-    #inhoud {
-      padding-top: 40px;
-    }
-
-    .section-2__flex {
-      display: flex;
-      align-items: center;
-      gap: 100px;
-    }
-
-    .section-2__flex-text {
-    }
-
-    .section-2__flex-img {
-      width: 100%;
-      flex-shrink: 0;
-    }
-    .section-2__flex-img > figure {
-      width: 100%;
-    }
-    .section-2__flex-img > figure > img {
-      width: 300px;
-      height: 200px;
-    }
-  </style>
   <body>
-    <div class="sticky">
-      <h1 id="restaurantnaam"></h1>
-    </div>
-    <h2>Gerechten</h2>
-    <div class="section-2__flex">
-      <div class="section-2__flex-text">
-        <ul class="list" id="gerechten">
-          <!-- hier komt js -->
-        </ul>
+    <bez-nav></bez-nav>
+    <main>
+      <div class="content">
+        <h2>Gerechten</h2>
+        <ul class="list" id="gerechten"></ul>
       </div>
-      <div class="section-2__flex-img">
-        <figure>
-          <img src="/img/pizza.jpg" alt="Pizza" />
-        </figure>
-      </div>
-    </div>
+      <aside class="winkelmandje">
+        <p>Afrekenen</p>
+        <div id="winkelmandje-container">
+          <!-- Winkelmandje of "winkelmandje is leeg"-->
+        </div>
+      </aside>
+    </main>
   </body>
-  <script>
-    const queryString = window.location.search;
-    const urlParams = new URLSearchParams(queryString);
-    const restaurantid = urlParams.get("id");
-    fetch("http://localhost:8080/restaurantbyid/" + restaurantid)
-      .then((Response) => Response.json())
-      .then((data) => {
-        var restaurantnaam = data.naam;
-        document.getElementById("restaurantnaam").innerHTML +=
-          "Menukaart " + restaurantnaam;
-      });
-
-    // TODO: dynamisch inladen menu items met restaurantid
-    fetch("http://localhost:8080/toonmenu/" + restaurantid)
-      .then((Response) => Response.json())
-      .then((data) => {
-        let gerechten = data.results;
-        let gerechtenWrapper = document.getElementById("gerechten");
-        let gerechtenString = "";
-        gerechten.forEacht((gerecht) => {
-          console.log(gerecht);
-        });
-        // for (var x = 0; x < data.length; x++) {
-        //   document.getElementById("list").innerHTML +=
-        //     "<li> <p>" +
-        //     data[x].naam +
-        //     "</p> <p>" +
-        //     data[x].prijs +
-        //     "</p> <button>Voeg toe aan winkelmand</button></li>";
-        // }
-      });
-  </script>
 </html>

@@ -1,30 +1,229 @@
 [
   {
-    "naam": "Pizzabakker",
-    "adres": "Foostraat 123",
+    "id": 0,
+    "naam": "La Gondelina",
+    "adres": "Nieuwe Singel 13",
     "telefoonnummer": "0612345678",
-    "rekeningnummer": "NL83INGB00029586767",
-    "openingstijden": "14:00-23:00",
+    "rekeningnummer": "NL13RABOB126839686",
+    "openingstijden": "16:00-00:00",
     "gerechten": [
       {
+        "id": 0,
         "naam": "Pizza Margherita",
-        "prijs": 13,
+        "prijs": 8,
         "afbeelding": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Pizza_Margherita_stu_spivack.jpg/1920px-Pizza_Margherita_stu_spivack.jpg"
+      },
+
+      {
+        "id": 1,
+        "naam": "Pizza Salami",
+        "prijs": 10,
+        "afbeelding": "https://beta.da-antonio.be/wp-content/uploads/2018/11/salami.jpeg"
+      },
+
+      {
+        "id": 2,
+        "naam": "Pizza Quattro Formaggi",
+        "prijs": 10,
+        "afbeelding": "https://www.vrieskoop.nl/img/_8226_1551506975.jpg"
+      },
+
+      {
+        "id": 3,
+        "naam": "Pizza Shoarma",
+        "prijs": 10,
+        "afbeelding": "https://cappadocia-grillroom.nl/wp-content/uploads/2020/04/Pizza-Shoarma-2048x2048.jpg"
+      },
+
+      {
+        "id": 4,
+        "naam": "Calzone met spinazie en ricotta",
+        "prijs": 12,
+        "afbeelding": "https://2.bp.blogspot.com/_Vq-8JYmBhD8/S93qUqjwVvI/AAAAAAAACHg/6XXV-dbzoFA/s1600/DSC01009.JPG"
       }
     ]
   },
   {
-    "naam": "Pizzabakkerrrrr",
-    "adres": "Foostraat 123",
+    "id": 1,
+    "naam": "De Nieuwe Smulhoek",
+    "adres": "Stationsplein 12",
     "telefoonnummer": "0612345678",
-    "rekeningnummer": "NL83INGB00029586767",
-    "openingstijden": "14:00-23:00",
+    "rekeningnummer": "NL22INGB221222122",
+    "openingstijden": "11:00-04:00",
     "gerechten": [
       {
-        "naam": "Pizza Margherita",
-        "prijs": 13,
-        "afbeelding": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Pizza_Margherita_stu_spivack.jpg/1920px-Pizza_Margherita_stu_spivack.jpg"
+        "id": 5,
+        "naam": "Kipburger",
+        "prijs": 6,
+        "afbeelding": "https://www.langeler-partycentrum.nl/wp-content/uploads/2018/09/langeler-1121.jpg"
+      },
+
+      {
+        "id": 6,
+        "naam": "Hamburger",
+        "prijs": 6,
+        "afbeelding": "https://fthmb.tqn.com/LELDmIthppxAOomOjsh9cASnutc=/5050x3345/filters:fill(FFDB5D,1)/homemade-hamburger-with-minced-beef-and-lettuce-on-sesame-roll-548309575-5ae4737f04d1cf003c0054e2.jpg"
+      },
+
+      {
+        "id": 7,
+        "naam": "Hamburger met kaas",
+        "prijs": 7,
+        "afbeelding": "https://grandmasthing.com/wp-content/uploads/2020/05/cheeseburger-4.jpg"
+      },
+
+      {
+        "id": 8,
+        "naam": "Dubbele hamburger met kaas",
+        "prijs": 12,
+        "afbeelding": "https://www.dubbysburgers.com/wp-content/uploads/2020/07/PBP_4641.jpg"
+      },
+
+      {
+        "id": 9,
+        "naam": "Dubbele kipburger",
+        "prijs": 12,
+        "afbeelding": "https://image.freepik.com/free-photo/big-double-cheddar-cheeseburger-with-chicken-cutlet_147620-1306.jpg"
+      }
+
+
+    ]
+  },
+
+  {
+    "id": 2,
+    "naam": "Brasserie Den Hongerige Uyl",
+    "adres": "Maasboulevard 1",
+    "telefoonnummer": "0612345678",
+    "rekeningnummer": "NL33INGB332323333",
+    "openingstijden": "11:00-22:30",
+    "gerechten": [
+      {
+        "id": 10,
+        "naam": "Biefstuk met friet",
+        "prijs": 18,
+        "afbeelding": "https://253qv1sx4ey389p9wtpp9sj0-wpengine.netdna-ssl.com/wp-content/uploads/2018/06/Steak_Frites_V10.jpg"
+      },
+
+      {
+        "id": 11,
+        "naam": "Salade Nicoise",
+        "prijs": 14,
+        "afbeelding": "http://weekendatthecottage.com/wp-content/uploads/2017/01/DSC_2066-min.jpg"
+      },
+
+      {
+        "id": 12,
+        "naam": "Broodje Zalmsalade",
+        "prijs": 9,
+        "afbeelding": "https://lunchlevering.nl/rails_uploads/products_retailer/picture/92116/broodje-zalmsalade.jpeg"
+      },
+
+      {
+        "id": 13,
+        "naam": "Halve kip met aardappelen",
+        "prijs": 16,
+        "afbeelding": "https://d33wubrfki0l68.cloudfront.net/78da9e4ca384fc81855fb6c20a5fc52a54b9d5f0/95d5f/images/uploads/2020_02_16_greek_style_skillet_roast_chicken_with_crispy_potatoes_4.jpg"
+      },
+
+      {
+        "id": 14,
+        "naam": "Uitsmijter",
+        "prijs": 11,
+        "afbeelding": "https://www.remiaprofessioneel.nl/images/filemanager/models/file/1600x900-grab/r080-jpg.jpeg"
+      }
+    ]
+  },
+
+  {
+    "id": 3,
+    "naam": "Fish & Chips",
+    "adres": "Maasboulevard 17",
+    "telefoonnummer": "0612345678",
+    "rekeningnummer": "NL44INGB442424444",
+    "openingstijden": "11:00-21:00",
+    "gerechten": [
+      {
+        "id": 15,
+        "naam": "Kibbeling",
+        "prijs": 6,
+        "afbeelding": "https://cdn1.matadornetwork.com/blogs/1/2021/04/Kibbeling-3.jpg"
+      },
+
+      {
+        "id": 16,
+        "naam": "Lekkerbekje",
+        "prijs": 8,
+        "afbeelding": "https://www.tafeltjegedekt.nl/wp-content/uploads/2019/11/Lekkerbekje-768x512.jpg"
+      },
+
+      {
+        "id": 17,
+        "naam": "Mix van gefrituurde zeevruchten",
+        "prijs": 11,
+        "afbeelding": "https://www.thespruceeats.com/thmb/ZlrpBw3TcyA85djaon48owmG7MA=/2500x1667/filters:fill(auto,1)/calamari-2500-56a20fb93df78cf77271869d.jpg"
+      },
+
+      {
+        "id": 18,
+        "naam": "Dikke friet",
+        "prijs": 3,
+        "afbeelding": "https://2.bp.blogspot.com/_Gxxz1pt2WIs/TBRsSEzzpLI/AAAAAAAAG0U/h6gP2jh4H1w/s1600/IMG_9988.JPG"
+      },
+
+      {
+        "id": 19,
+        "naam": "Gerookte makreel",
+        "prijs": 6,
+        "afbeelding": "https://www.lindenhoff.nl/content/uploads/product_images/985/original/IMG_0833-1536x1166.jpg"
+      }
+    ]
+  },
+
+  {
+    "id": 4,
+    "naam": "De Gouden Pokébowl",
+    "adres": "Bakkersteeg 1",
+    "telefoonnummer": "0612345678",
+    "rekeningnummer": "NL55INGB5524255554",
+    "openingstijden": "11:00-21:00",
+    "gerechten": [
+      {
+        "id": 20,
+        "naam": "Pokébowl met komkommer en zalm",
+        "prijs": 10,
+        "afbeelding": "https://i1.wp.com/www.angsarap.net/wp-content/uploads/2019/05/Poke-Bowl-Wide.jpg?fit=1080%2C720&ssl=1"
+      },
+
+      {
+        "id": 21,
+        "naam": "Pokébowl met falafel",
+        "prijs": 8,
+        "afbeelding": "https://pixel.parall.ax/parallax-agency/image/upload/expose/cauldron-2018/site-images/20180529175231_Poke_Bowl.jpg"
+      },
+
+      {
+        "id": 22,
+        "naam": "Pokébowl met avocado en tonijn",
+        "prijs": 10,
+        "afbeelding": "http://www.flavorfinds.com/wp-content/uploads/2016/07/DSC05872.jpg"
+      },
+
+      {
+        "id": 23,
+        "naam": "Pokébowl met vegan kip",
+        "prijs": 8,
+        "afbeelding": "https://res.cloudinary.com/hellofresh/image/upload/f_auto,fl_lossy,q_80,w_auto:100:1280/v1/hellofresh_s3/image/w32-r4-4cc5476d.jpg"
+      },
+
+      {
+        "id": 24,
+        "naam": "Pokébowl met tempeh",
+        "prijs": 8,
+        "afbeelding": "https://velvetandvinegar.com/wp-content/uploads/2019/03/fried-tempeh-banan-poke-bowl-with-wakame-1-von-1.jpg"
       }
     ]
   }
+  
+
 ]
