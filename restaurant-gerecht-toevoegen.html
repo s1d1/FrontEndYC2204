@@ -6,24 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="./restaurant-gerecht-toevoegen.js" type="module"></script>
     <link rel="stylesheet" href="menukaart.css" />
-    <title>Menukaart</title>
+    <title>Restaurant adminpagina</title>
+    <script src="./components/bez-nav.js" type="module"></script>
   </head>
   <body>
     <div class="header">
-      <h1 id="restaurantnaam"></h1>
-    </div>
+       <bez-nav></bez-nav>
+      </div>
+    
+    
     <main>
       <h2>Gerechten</h2>
       <ul class="list" id="gerechten">
-        <!-- <li class="flex-item">
-          <div class="flex__text>
-              <p>${gerecht.naam}</p>
-              <p>Prijs: €${gerecht.prijs}</p>
-          </div>
-          <div class="flex__img">
-              <img src=${gerecht.afbeelding}>
-          </div> 
-      </li> -->
       </ul>
     </main>
   </body>
