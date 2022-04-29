@@ -1,0 +1,61 @@
+/* Lettertype */
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans&display=swap");
+html {
+    font-family: "Plus Jakarta Sans", sans-serif;
+}
+
+#inhoud {
+padding-top: 40px;
+}
+
+.flex-item {
+    display: flex;
+    align-items: center;
+    width: 800px;
+}
+
+.flex-item > div > img { 
+    width: 200px;
+}
+
+.flex-item :first-child {
+  flex-grow: 1;
+}
+
+div.header {
+  background: black;
+}
+
+  /* .section-2__flex {
+    display: flex;
+    align-items: center;
+    gap: 100px;
+  }
+
+  .section-2__flex-text {
+  }
+
+  .section-2__flex-img {
+    width: 100%;
+    flex-shrink: 0;
+  }
+  .section-2__flex-img > figure {
+    width: 100%;
+  }
+  .section-2__flex-img > figure > img {
+    width: 300px;
+    height: 200px;
+  } */
+
+main {
+  display: flex;
+}
+
+.content {
+  flex-grow: 1;
+}
+
+aside {
+  width: 200px;
+  background-color: yellow;
+}
