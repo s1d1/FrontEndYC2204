@@ -1,36 +1,26 @@
 import { renderWinkelmandje, setWinkelmandjeData } from './winkelmandje.js';
 
-// Haalt naam restaurant op op basis van query
-// const queryString = window.location.search;
-// const urlParams = new URLSearchParams(queryString);
-// const restaurantid = urlParams.get("id");
-// fetch("http://localhost:8080/restaurantbyid/" + restaurantid)
-//     .then((Response) => Response.json())
-//     .then((data) => {
-//     var restaurantnaam = data.naam;
-//     document.getElementById("restaurantnaam").innerHTML +=
-//         "Menukaart " + restaurantnaam;
-//     });
-
-
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
 const restaurantid = parseInt(urlParams.get("id"), 10);
 
-fetch("./data/restaurants.json")
-.then((response) => response.json())
-.then((restaurants) => {
-    const restaurant = restaurants.find(restaurants => restaurants.id === restaurantid);
 
+fetch("https://backendyc2204bezorging.azurewebsites.net/restaurantbyid/" + restaurantid)
+.then((Response) => Response.json())
+.then((data) => {
+    const restaurant = data;
     var restaurantnaam = restaurant.naam;
     const bezNav = document.querySelector("bez-nav");
-    console.log(restaurantnaam, bezNav);
     bezNav.title = restaurantnaam;
+});
 
+fetch("https://backendyc2204bezorging.azurewebsites.net/toonmenu/" + restaurantid)
+.then((Response) => Response.json())
+.then((gerechten) => {
 
     const listEL = document.getElementById("gerechten");
     let htmlString = "";
-    restaurant.gerechten.forEach((gerecht) => {
+    gerechten.forEach((gerecht) => {
         htmlString += template_gerecht(gerecht);
     })
     listEL.innerHTML = htmlString;
@@ -71,8 +61,8 @@ fetch("./data/restaurants.json")
             renderWinkelmandje(restaurantid);
         })
     })
-})
 
+});
 
 function template_gerecht(gerecht) {
     return `
@@ -92,3 +82,61 @@ function template_gerecht(gerecht) {
 }
 
 renderWinkelmandje(restaurantid);
+
+
+
+// fetch("./data/restaurants.json")
+// .then((response) => response.json())
+// .then((restaurants) => {
+//     const restaurant = restaurants.find(restaurants => restaurants.id === restaurantid);
+
+//     var restaurantnaam = restaurant.naam;
+//     const bezNav = document.querySelector("bez-nav");
+//     console.log(restaurantnaam, bezNav);
+//     bezNav.title = restaurantnaam;
+
+
+//     const listEL = document.getElementById("gerechten");
+//     let htmlString = "";
+//     restaurant.gerechten.forEach((gerecht) => {
+//         htmlString += template_gerecht(gerecht);
+//     })
+//     listEL.innerHTML = htmlString;
+
+//     document.querySelectorAll('[data-btn-add]').forEach(btn => {
+//         btn.addEventListener('click', (ev) => {
+//             const el = ev.target;
+//             let data = localStorage.getItem('winkelmandje');
+//             if (!data) {
+//                 data = {};  
+//             } else {
+//                 data = JSON.parse(data);
+//             }
+//             const id = parseInt(el.getAttribute('data-id'), 10);
+//             const naam = el.getAttribute('data-naam');
+//             const prijs = parseFloat(el.getAttribute('data-prijs'));
+//             if (
+//                 typeof data[restaurantid] === 'object' && 
+//                 typeof data[restaurantid][id] === 'object' && 
+//                 data[restaurantid][id].hoeveelheid
+//             ) {
+//                 data[restaurantid][id].hoeveelheid++;
+//             } else {
+//                 const newGerecht = {
+//                     naam,
+//                     prijs,
+//                     hoeveelheid: 1
+//                 }
+//                 if (typeof data[restaurantid] === 'object') {
+//                     data[restaurantid][id] = newGerecht
+//                 } else {
+//                     data[restaurantid] = {
+//                         [id]: newGerecht
+//                     }
+//                 }
+//             }
+//             setWinkelmandjeData(JSON.stringify(data));
+//             renderWinkelmandje(restaurantid);
+//         })
+//     })
+// })
