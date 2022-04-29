@@ -1,0 +1,14 @@
+div.sticky {
+    position: sticky;
+    top: 0;
+    background-color: rgb(215, 232, 238);
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 10px;
+    background: linear-gradient(90deg, rgba(62,9,9,1) 0%, rgba(121,9,9,1) 40%, rgba(182,19,81,1) 91%);
+  }
+
+  h1 {
+    text-align: center;
+    color: rgb(230, 230, 230);
+  }
