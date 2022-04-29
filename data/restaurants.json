@@ -1,0 +1,30 @@
+[
+  {
+    "naam": "Pizzabakker",
+    "adres": "Foostraat 123",
+    "telefoonnummer": "0612345678",
+    "rekeningnummer": "NL83INGB00029586767",
+    "openingstijden": "14:00-23:00",
+    "gerechten": [
+      {
+        "naam": "Pizza Margherita",
+        "prijs": 13,
+        "afbeelding": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Pizza_Margherita_stu_spivack.jpg/1920px-Pizza_Margherita_stu_spivack.jpg"
+      }
+    ]
+  },
+  {
+    "naam": "Pizzabakkerrrrr",
+    "adres": "Foostraat 123",
+    "telefoonnummer": "0612345678",
+    "rekeningnummer": "NL83INGB00029586767",
+    "openingstijden": "14:00-23:00",
+    "gerechten": [
+      {
+        "naam": "Pizza Margherita",
+        "prijs": 13,
+        "afbeelding": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Pizza_Margherita_stu_spivack.jpg/1920px-Pizza_Margherita_stu_spivack.jpg"
+      }
+    ]
+  }
+]
