@@ -1,4 +1,4 @@
-fetch("./data/restaurants.json")
+fetch("https://backendyc2204bezorging.azurewebsites.net/toonrestaurants/")
   .then((response) => response.json())
   .then((restaurants) => {
     const listEl = document.getElementById("list");
@@ -21,7 +21,7 @@ function template(data) {
           <p>${data.adres}</p>
         </div>
         <div>
-        <img class="plaatje" src="${data.gerechten[0].afbeelding}" />
+          <img class="plaatje" src="${data.gerechten[0].afbeelding}" />
         </div>
       </a>
     </li>
