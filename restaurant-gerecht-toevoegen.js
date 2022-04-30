@@ -125,7 +125,7 @@ window.testPost = function(){ // de functie testPost wordt hier gedefinieerd via
     const url = 'http://backendyc2204bezorging.azurewebsites.net/gerechttoevoegen/' + restaurantid;
 
     const nieuwGerecht = {
-        "naam": "Testaardappel",
+        "naam": "Testaardappel3",
         "prijs": 999,
         "afbeelding": "https://cipotato.org/wp-content/uploads/2020/03/potatoes.jpg"
     };
@@ -142,7 +142,7 @@ window.testPost = function(){ // de functie testPost wordt hier gedefinieerd via
     console.log(nieuwGerecht)
     fetch(url, options)
         .then (response => response.json())
-        .then (response => console.log(response));
+        .then (reactie => console.log(reactie));
 };
   
  
