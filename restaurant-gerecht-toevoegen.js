@@ -119,13 +119,14 @@ fetch("./data/restaurants.json")
 // WIP: POST request met fetch
 // referentie: https://stackoverflow.com/questions/39565706/post-request-with-fetch-api#39565776
 
-window.testPost = function(){ // de functie testPost wordt hier gedefinieerd via window-object om het globaal te maken.
+window.testPost = function(){ // de functie testPost wordt hier gedefinieerd via window-object om het globaal te maken. 
+                             //Hij wordt geactiveerd met onclick op button.
     console.log("Hallo dit is testPost()");
 
     const url = 'http://backendyc2204bezorging.azurewebsites.net/gerechttoevoegen/' + restaurantid;
 
     const nieuwGerecht = {
-        "naam": "Testaardappel3",
+        "naam": "Testaardappel6",
         "prijs": 999,
         "afbeelding": "https://cipotato.org/wp-content/uploads/2020/03/potatoes.jpg"
     };
@@ -141,8 +142,8 @@ window.testPost = function(){ // de functie testPost wordt hier gedefinieerd via
     
     console.log(nieuwGerecht)
     fetch(url, options)
-        .then (response => response.json())
-        .then (reactie => console.log(reactie));
+        .then (response => console.log(response))
+   
 };
   
  
