@@ -30,7 +30,7 @@ function template_gerecht(gerecht) {
 fetch("./data/restaurants.json")
     .then((response) => response.json())
     .then((restaurantdata) => {
-        const restaurant = restaurantdata.find(restaurants => restaurants.id === restaurantid);
+        const restaurant = restaurantdata.find(restaurant => restaurant.id === restaurantid);
 
         var restaurantnaam = restaurant.naam;
         const bezNav = document.querySelector("bez-nav");
@@ -42,6 +42,7 @@ fetch("./data/restaurants.json")
         let htmlString = "";
         restaurant.gerechten.forEach((gerecht) => {
             htmlString += template_gerecht(gerecht);
+            console.log(gerecht); 
         })
        // listEL.innerHTML = htmlString;
 
@@ -74,7 +75,7 @@ fetch("./data/restaurants.json")
 
         // Dit is het gerecht toevoegen formulier, dat aan het einde van de lijst met bestaande gerechten wordt gehangen.
 
-        const FormEndpoint = "https://backendyc2204bezorging.azurewebsites.net/gerechttoevoegen/" + restaurantid;
+       // const FormEndpoint = "https://backendyc2204bezorging.azurewebsites.net/gerechttoevoegen/" + restaurantid;
         const FormNieuwGerecht =
             `
             <li class="flex-item">
@@ -119,27 +120,29 @@ fetch("./data/restaurants.json")
 // referentie: https://stackoverflow.com/questions/39565706/post-request-with-fetch-api#39565776
 
 window.testPost = function(){ // de functie testPost wordt hier gedefinieerd via window-object om het globaal te maken.
-    console.log("Hallo dit is testPost")
+    console.log("Hallo dit is testPost()");
 
-    const url = 'https://backendyc2204bezorging.azurewebsites.net/gerechttoevoegen/' + restaurantid;
+    const url = 'http://backendyc2204bezorging.azurewebsites.net/gerechttoevoegen/' + restaurantid;
+
+    const nieuwGerecht = {
+        "naam": "Testaardappel",
+        "prijs": 999,
+        "afbeelding": "https://cipotato.org/wp-content/uploads/2020/03/potatoes.jpg"
+    };
 
     const options = {
         method: 'POST',
+        body: JSON.stringify(nieuwGerecht),
         headers: {
-            'Content-Type': 'application/json',
+            'Content-Type': 'application/json'
         },
     };
+     
     
-    const body = JSON.stringify({
-        naam: "Testgerecht",
-        prijs: "6",
-        afbeelding: "Testurl"
-    });
-    
-    console.log(body)
-    // fetch(url, options, body)
-    //     .then (response => response.json())
-    //     .then (response => console.log(response));
+    console.log(nieuwGerecht)
+    fetch(url, options)
+        .then (response => response.json())
+        .then (response => console.log(response));
 };
   
  
