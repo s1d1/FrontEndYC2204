@@ -112,31 +112,36 @@ window.testPost = function () { // de functie testPost wordt hier gedefinieerd v
 window.sendData = function () {
    //e.preventDefault();
 
+  
+
 
     // A GET FORM DATA
-    let formdata = new FormData();
-    formdata.append("naam", document.getElementById("naam1").value);
-    formdata.append("prijs", document.getElementById("prijs1").value);
-    formdata.append("afbeelding", document.getElementById("afbeelding1").value);
+    let rawData = new FormData();
+    rawData.append("naam", document.getElementById("gerechtnaam").value);
+    rawData.append("prijs", document.getElementById("gerechtprijs").value);
+    rawData.append("afbeelding", document.getElementById("gerechturl").value);
 
-    // snippet om formdata te inspecteren in console.log 
-    console.log("Formuliergegevens:")
-    for(var pair of formdata.entries()) {  
-        console.log(pair[0]+ ', '+ pair[1]); 
-    }
+    // snippet om fordata te converteren in JSON
+    const data = {};
+    rawData.forEach((value, key) => (data[key] = value));
+    console.log(data);
+
+    
+    
+    
+    const url = 'http://backendyc2204bezorging.azurewebsites.net/gerechttoevoegen/' + restaurantid;
+
+    const options = {
+        method: 'POST',
+        body: JSON.stringify(data),
+        headers: {
+            'Content-Type': 'application/json'
+        },
+    };
+    // B INIT FETCH POST
+    fetch(url, options)
+        .then((response) => console.log(response))
+       
+
     return false;
-//     const url = 'http://backendyc2204bezorging.azurewebsites.net/gerechttoevoegen/' + restaurantid;
-
-//     const options = {
-//         method: 'POST',
-//         body: JSON.stringify(data),
-//         headers: {
-//             'Content-Type': 'application/json'
-//         },
-//     };
-//     // B INIT FETCH POST
-//     fetch(url, options)
-//         .then((result) => {
-//            console.log(response)
-//         })
 }

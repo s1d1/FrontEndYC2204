@@ -23,24 +23,24 @@
 
     </ul>
     <h2>Nieuw gerecht toevoegen:</h2>
-    <form id="form-gerecht-toevoegen">
+    <form id="form-gerecht-toevoegen" onsubmit="return sendData()">
       <div class="fields">
         <div class="formitem">
           <label for="gerechtnaam">
             Naam gerecht:
-            <input type="text" id="gerechtnaam">
+            <input type="text" id="gerechtnaam" value="Testzalm">
           </label>
         </div>
         <div class="formitem">
           <label for="gerechtprijs">
             Prijs:
-            <input type="text" id="gerechtprijs">
+            <input type="text" id="gerechtprijs" value="99">
           </label>
         </div>
         <div class="formitem">
           <label for="gerechturl">
             UMG-url:
-            <input type="text" id="gerechturl">
+            <input type="text" id="gerechturl" value="https://theyellowdotcollective.com/wp-content/uploads/2020/11/food-20.jpg">
           </label>
         </div>
       </div>
@@ -48,21 +48,9 @@
       <div class="submit">
         <input type="submit" value="Toevoegen">
       </div>
-      <div id="testknop">   <button type="button" onclick="testPost()">**test gerecht**</button></div>
+      <div id="testknop">   <button type="button" onclick="testPost()">**test gerecht met vaste waarden**</button></div>
     </form>
 
-    
- 
-
-    <h2>Testformulier</h2>
-    <!-- "return sendData()" met return fase in de functie 
-      zodat de pagina niet refreshed als je submit. -->
-    <form onsubmit="return sendData()"> 
-    <input type="text" id="naam1" value="Testtomaat" required/>
-    <input type="number" id="prijs1" value="2" required/>
-    <input type="text" id="afbeelding1" value="https://www.worldtomatosociety.com/wp-content/uploads/Donskoi-1.jpg" required/>
-    <input type="submit" value="Go!" />
-    </form>
 
 
   </main>
