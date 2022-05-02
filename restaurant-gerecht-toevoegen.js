@@ -42,11 +42,11 @@ fetch("./data/restaurants.json")
         let htmlString = "";
         restaurant.gerechten.forEach((gerecht) => {
             htmlString += template_gerecht(gerecht);
-            console.log(gerecht); 
+            console.log(gerecht);
         })
-      
 
-  
+
+
 
         // hier wordt de restaurantnaam opgehaald uit DATABASE en aan bezNav gegeven.
         // fetch("https://backendyc2204bezorging.azurewebsites.net/restaurantbyid/" + restaurantid)
@@ -70,15 +70,15 @@ fetch("./data/restaurants.json")
         //         })
 
         listEL.innerHTML = htmlString;
-})
+    })
 
 
 
 // WIP: POST request met fetch
 // referentie: https://stackoverflow.com/questions/39565706/post-request-with-fetch-api#39565776
 
-window.testPost = function(){ // de functie testPost wordt hier gedefinieerd via window-object om het globaal te maken. 
-                             //Hij wordt geactiveerd met onclick op button.
+window.testPost = function () { // de functie testPost wordt hier gedefinieerd via window-object om het globaal te maken. 
+    //Hij wordt geactiveerd met onclick op button.
     console.log("Hallo dit is testPost()");
 
     const url = 'http://backendyc2204bezorging.azurewebsites.net/gerechttoevoegen/' + restaurantid;
@@ -96,10 +96,52 @@ window.testPost = function(){ // de functie testPost wordt hier gedefinieerd via
             'Content-Type': 'application/json'
         },
     };
-     
-    
+
+
     console.log(nieuwGerecht)
     fetch(url, options)
-        .then (response => console.log(response))
-   
+        .then(response => console.log(response))
+
 };
+
+//SAMPLE post form data met javascript
+// referentie: https://code-boxx.com/post-form-data-javascript-fetch/#sec-post
+
+window.sendData = function () {
+
+
+
+    // A GET FORM DATA
+    var data = new FormData();
+    data.append("naam", document.getElementById("naam").value);
+    data.append("prijs", document.getElementById("prijs").value);
+    data.append("afbeelding", document.getElementById("afbeelding").value);
+
+    const url = 'http://backendyc2204bezorging.azurewebsites.net/gerechttoevoegen/' + restaurantid;
+
+    const options = {
+        method: 'POST',
+        body: data,
+        headers: {
+            'Content-Type': 'application/json'
+        },
+    };
+    // B INIT FETCH POST
+    fetch(url, options)
+        .then((result) => {
+            if (result.status != 200) { throw new Error("Bad Server Response"); }
+            return result.text();
+        })
+
+        // (D) SERVER RESPONSE
+        .then((response) => {
+            console.log(response);
+        })
+
+        // (E) HANDLE ERRORS - OPTIONAL
+        .catch((error) => { console.log(error); });
+
+    // (F) PREVENT FORM SUBMIT
+    return false;
+
+}
