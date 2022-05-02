@@ -119,7 +119,11 @@ window.sendData = function () {
     formdata.append("prijs", document.getElementById("prijs1").value);
     formdata.append("afbeelding", document.getElementById("afbeelding1").value);
 
-    console.log(formdata);
+    // snippet om formdata te inspecteren in console.log 
+    console.log("Formuliergegevens:")
+    for(var pair of formdata.entries()) {  
+        console.log(pair[0]+ ', '+ pair[1]); 
+    }
     return false;
 //     const url = 'http://backendyc2204bezorging.azurewebsites.net/gerechttoevoegen/' + restaurantid;
 
