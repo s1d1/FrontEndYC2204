@@ -27,51 +27,52 @@ function template_gerecht(gerecht) {
 }
 
 // fetch functie met lokale DUMMY data.
-// fetch("./data/restaurants.json")
-//     .then((response) => response.json())
-//     .then((restaurantdata) => {
-//         const restaurant = restaurantdata.find(restaurant => restaurant.id === restaurantid);
+fetch("./data/restaurants.json")
+  
+    .then((response) => response.json())
+    .then((restaurantdata) => {
+        const restaurant = restaurantdata.find(restaurant => restaurant.id === restaurantid);
 
-//         var restaurantnaam = restaurant.naam;
-//         const bezNav = document.querySelector("bez-nav");
-//         console.log(restaurantnaam, bezNav);
-//         bezNav.title = restaurantnaam + " - Adminpagina - Gerechten toevoegen";
+        var restaurantnaam = restaurant.naam;
+        const bezNav = document.querySelector("bez-nav");
+        console.log(restaurantnaam, bezNav);
+        bezNav.title = restaurantnaam + " - Adminpagina - Gerechten toevoegen";
 
 
-//         const listEL = document.getElementById("gerechten");
-//         let htmlString = "";
-//         restaurant.gerechten.forEach((gerecht) => {
-//             htmlString += template_gerecht(gerecht);
-//             console.log(gerecht);
-//         })
+        const listEL = document.getElementById("gerechten");
+        let htmlString = "";
+        restaurant.gerechten.forEach((gerecht) => {
+            htmlString += template_gerecht(gerecht);
+            console.log(gerecht);
+        })
 
-//         listEL.innerHTML = htmlString;
-//     })
+        listEL.innerHTML = htmlString;
+    })
 
 
         // hier wordt de restaurantnaam opgehaald uit DATABASE en aan bezNav gegeven.
-        fetch("https://backendyc2204bezorging.azurewebsites.net/restaurantbyid/" + restaurantid)
-            //fetch("https://localhost:8080/restaurantbyid/" + restaurantid)
-            .then((response) => response.json())
-            .then((restaurant) => {
-                let restaurantnaam = restaurant.naam;
-                const bezNav = document.querySelector("bez-nav");
-                bezNav.title = restaurantnaam + " - Adminpagina - Gerechten toevoegen";
-            })
+    //     fetch("https://backendyc2204bezorging.azurewebsites.net/restaurantbyid/" + restaurantid)
+    //         //fetch("https://localhost:8080/restaurantbyid/" + restaurantid)
+    //         .then((response) => response.json())
+    //         .then((restaurant) => {
+    //             let restaurantnaam = restaurant.naam;
+    //             const bezNav = document.querySelector("bez-nav");
+    //             bezNav.title = restaurantnaam + " - Adminpagina - Gerechten toevoegen";
+    //         })
             
 
-     //   hier worden de restaurantgerechten opgehaald uit DATABASE en in lijstitems gestopt.
-        fetch("https://backendyc2204bezorging.azurewebsites.net/toonmenu/" + restaurantid)
-            //fetch("https://localhost:8080/toonmenu/" + restaurantid)
-            .then((response) => response.json())
-            .then((gerechtendata) => {
-                const listEL = document.getElementById("gerechten");
-                let htmlString = "";
-                gerechtendata.forEach((gerecht) => {
-                    htmlString += template_gerecht(gerecht);
-                })
-                listEL.innerHTML = htmlString;
-                   })
+    //  //   hier worden de restaurantgerechten opgehaald uit DATABASE en in lijstitems gestopt.
+    //     fetch("https://backendyc2204bezorging.azurewebsites.net/toonmenu/" + restaurantid)
+    //         //fetch("https://localhost:8080/toonmenu/" + restaurantid)
+    //         .then((response) => response.json())
+    //         .then((gerechtendata) => {
+    //             const listEL = document.getElementById("gerechten");
+    //             let htmlString = "";
+    //             gerechtendata.forEach((gerecht) => {
+    //                 htmlString += template_gerecht(gerecht);
+    //             })
+    //             listEL.innerHTML = htmlString;
+    //                })
 
 
 
@@ -85,7 +86,7 @@ window.testPost = function () { // de functie testPost wordt hier gedefinieerd v
     const url = 'http://backendyc2204bezorging.azurewebsites.net/gerechttoevoegen/' + restaurantid;
 
     const nieuwGerecht = {
-        "naam": "Testaardappel6",
+        "naam": "Testaardappel8",
         "prijs": 999,
         "afbeelding": "https://cipotato.org/wp-content/uploads/2020/03/potatoes.jpg"
     };
@@ -105,44 +106,32 @@ window.testPost = function () { // de functie testPost wordt hier gedefinieerd v
 
 };
 
-//SAMPLE post form data met javascript
+// SAMPLE post form data met javascript
 // referentie: https://code-boxx.com/post-form-data-javascript-fetch/#sec-post
 
-window.sendData = function () {
+// window.sendData = function () {
 
 
 
-    // A GET FORM DATA
-    var data = new FormData();
-    data.append("naam", document.getElementById("naam").value);
-    data.append("prijs", document.getElementById("prijs").value);
-    data.append("afbeelding", document.getElementById("afbeelding").value);
+//     // A GET FORM DATA
+//     let formdata = new FormData();
+//     formdata.append("naam", document.getElementById("naam1").value);
+//     formdata.append("prijs", document.getElementById("prijs1").value);
+//     formdata.append("afbeelding", document.getElementById("afbeelding1").value);
 
-    const url = 'http://backendyc2204bezorging.azurewebsites.net/gerechttoevoegen/' + restaurantid;
+//     console.log(formdata);
+//     const url = 'http://backendyc2204bezorging.azurewebsites.net/gerechttoevoegen/' + restaurantid;
 
-    const options = {
-        method: 'POST',
-        body: data,
-        headers: {
-            'Content-Type': 'application/json'
-        },
-    };
-    // B INIT FETCH POST
-    fetch(url, options)
-        .then((result) => {
-            if (result.status != 200) { throw new Error("Bad Server Response"); }
-            return result.text();
-        })
-
-        // (D) SERVER RESPONSE
-        .then((response) => {
-            console.log(response);
-        })
-
-        // (E) HANDLE ERRORS - OPTIONAL
-        .catch((error) => { console.log(error); });
-
-    // (F) PREVENT FORM SUBMIT
-    return false;
-
-}
+//     const options = {
+//         method: 'POST',
+//         body: JSON.stringify(data),
+//         headers: {
+//             'Content-Type': 'application/json'
+//         },
+//     };
+//     // B INIT FETCH POST
+//     fetch(url, options)
+//         .then((result) => {
+//            console.log(response)
+//         })
+// }
