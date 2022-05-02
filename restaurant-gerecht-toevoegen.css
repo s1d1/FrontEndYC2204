@@ -18,29 +18,17 @@ html {
   flex-grow: 1;
 }
 
-.form {
+form {
     display: flex;
-    flex-direction: column;
-    
-}
-
-.form > p {
-    width: 2000px;
-}
-.formitem {
-    display: flex;
+    align-items: center;
     flex-direction: row;
-    
-    
+    justify-content: flex-start;
+    gap: 200px;
 }
-
-.formitem > input {
-    flex-grow: 1;
-}
-
 
 main {
   display: flex;
+  flex-direction: column;
 }
 
 .content {

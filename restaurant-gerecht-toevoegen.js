@@ -44,7 +44,7 @@ fetch("./data/restaurants.json")
             htmlString += template_gerecht(gerecht);
             console.log(gerecht); 
         })
-       // listEL.innerHTML = htmlString;
+      
 
   
 
@@ -69,49 +69,7 @@ fetch("./data/restaurants.json")
         //             htmlString += template_gerecht(gerecht);
         //         })
 
-
-
-
-
-        // Dit is het gerecht toevoegen formulier, dat aan het einde van de lijst met bestaande gerechten wordt gehangen.
-
-       // const FormEndpoint = "https://backendyc2204bezorging.azurewebsites.net/gerechttoevoegen/" + restaurantid;
-        const FormNieuwGerecht =
-            `
-            <li class="flex-item">
-                <div class="form">
-                    <h2>Voeg nieuw gerecht toe:</h2>
-                    <form id="form-gerecht-toevoegen">
-                        <div class="formitem" id="form1">
-                            <label for="gerechtnaam">
-                                Naam gerecht:
-                            <input type="text" id="gerechtnaam">
-                            </label>
-                        </div>
-                        <div class="formitem" id="form2">
-                            <label for="gerechtprijs">
-                                Prijs:
-                                <input type="text" id="gerechtprijs">
-                            </label>
-                        </div>
-                        <div class="formitem"  id="form3">
-                            <label for="gerechturl">
-                                UMG-url:
-                                <input type="text" id="gerechturl">
-                            </label>
-                        </div>
-                        <input type="submit" value="Toevoegen">
-                    </form>
-                    
-                        
-                </div>
-                <button onclick="testPost()">**test gerecht**</button>
-            </li>
-            `
-
-
-        listEL.innerHTML = htmlString + FormNieuwGerecht;
-
+        listEL.innerHTML = htmlString;
 })
 
 
@@ -145,5 +103,3 @@ window.testPost = function(){ // de functie testPost wordt hier gedefinieerd via
         .then (response => console.log(response))
    
 };
-  
- 

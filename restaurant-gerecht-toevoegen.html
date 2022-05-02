@@ -1,27 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="./restaurant-gerecht-toevoegen.js" type="module"></script>
-    <link rel="stylesheet" href="restaurant-gerecht-toevoegen.css" />
-    <title>Restaurant adminpagina</title>
-    <script src="./components/bez-nav.js" type="module"></script>
-  </head>
 
-  <body>
-    <div class="header">
-       <bez-nav></bez-nav>
-      </div>
-    <main>
-      <h2>Gerechten</h2>
-      <ul class="list" id="gerechten">
-        <!-- Onderaan de lijst van gerechten hangt ook een formulier,
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="./restaurant-gerecht-toevoegen.js" type="module"></script>
+  <link rel="stylesheet" href="restaurant-gerecht-toevoegen.css" />
+  <title>Restaurant adminpagina</title>
+  <script src="./components/bez-nav.js" type="module"></script>
+</head>
+
+<body>
+  <div class="header">
+    <bez-nav></bez-nav>
+  </div>
+  <main>
+    <h2>Gerechten</h2>
+    <ul class="list" id="gerechten">
+      <!-- Onderaan de lijst van gerechten hangt ook een formulier,
           die wordt gegenereerd in Javascript.-->
-       
-      </ul>
-   
-    </main>
-  </body>
+
+    </ul>
+    <h2>Nieuw gerecht toevoegen:</h2>
+    <form id="form-gerecht-toevoegen">
+      <div class="fields">
+        <div class="formitem">
+          <label for="gerechtnaam">
+            Naam gerecht:
+            <input type="text" id="gerechtnaam">
+          </label>
+        </div>
+        <div class="formitem">
+          <label for="gerechtprijs">
+            Prijs:
+            <input type="text" id="gerechtprijs">
+          </label>
+        </div>
+        <div class="formitem">
+          <label for="gerechturl">
+            UMG-url:
+            <input type="text" id="gerechturl">
+          </label>
+        </div>
+      </div>
+
+      <div class="submit">
+        <input type="submit" value="Toevoegen">
+      </div>
+      <div id="testknop">   <button onclick="testPost()">**test gerecht**</button></div>
+    </form>
+
+    
+ 
+
+    <h2>Testformulier</h2>
+
+
+  </main>
+</body>
+
 </html>
