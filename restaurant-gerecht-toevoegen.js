@@ -36,7 +36,7 @@ fetch("./data/restaurants.json")
         var restaurantnaam = restaurant.naam;
         const bezNav = document.querySelector("bez-nav");
         console.log(restaurantnaam, bezNav);
-        bezNav.title = restaurantnaam + " - Adminpagina - Gerechten toevoegen";
+        bezNav.title = restaurantnaam + " - Adminpagina - Gerechten toevoegen (dummylijst, formulier wel naar database)";
 
 
         const listEL = document.getElementById("gerechten");
