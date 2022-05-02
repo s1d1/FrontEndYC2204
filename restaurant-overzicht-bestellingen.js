@@ -5,49 +5,23 @@ const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
 const restaurantid = parseInt(urlParams.get("id"), 10);
 
-// template voor lijstitems van gerechten
-function template_gerecht(gerecht) {
+// template voor lijstitems van bestelling
+function template_bestelling (bestelling) {
     return `
     <li class="flex-item">
         <div>
-            <p>Naam: ${gerecht.naam}</p>
-            <p>Prijs: € ${gerecht.prijs}</p>
-            <p>IMG-url: ${gerecht.afbeelding}</p>
+            <p>Naam: ${bestelling.klant.naam}</p>
         </div>
 
-        <div>
-            <img src=${gerecht.afbeelding}>
-        </div> 
+       
         <button>
-            Verwijderen
+            Status veranderen
         </button> 
 
     </li>`
 
 }
 
-// fetch functie met lokale DUMMY data.
-// fetch("./data/restaurants.json")
-  
-//     .then((response) => response.json())
-//     .then((restaurantdata) => {
-//         const restaurant = restaurantdata.find(restaurant => restaurant.id === restaurantid);
-
-//         var restaurantnaam = restaurant.naam;
-//         const bezNav = document.querySelector("bez-nav");
-//         console.log(restaurantnaam, bezNav);
-//         bezNav.title = restaurantnaam + " - Adminpagina - Gerechten toevoegen (dummylijst, formulier wel naar database)";
-
-
-//         const listEL = document.getElementById("gerechten");
-//         let htmlString = "";
-//         restaurant.gerechten.forEach((gerecht) => {
-//             htmlString += template_gerecht(gerecht);
-//             console.log(gerecht);
-//         })
-
-//         listEL.innerHTML = htmlString;
-//     })
 
 
         // hier wordt de restaurantnaam opgehaald uit DATABASE en aan bezNav gegeven.
@@ -57,91 +31,21 @@ function template_gerecht(gerecht) {
             .then((restaurant) => {
                 let restaurantnaam = restaurant.naam;
                 const bezNav = document.querySelector("bez-nav");
-                bezNav.title = restaurantnaam + " - Adminpagina - Gerechten toevoegen";
+                bezNav.title = restaurantnaam + " - Adminpagina - Bestellingoverzicht";
             })
             
 
-    //  //   hier worden de restaurantgerechten opgehaald uit DATABASE en in lijstitems gestopt.
-        fetch("https://backendyc2204bezorging.azurewebsites.net/toonmenu/" + restaurantid)
+    //   hier worden de bestellingen van het restaurant opgehaald uit DATABASE en in lijstitems gestopt.
+        fetch("https://backendyc2204bezorging.azurewebsites.net/toonresbestellingen/" + restaurantid)
             //fetch("https://localhost:8080/toonmenu/" + restaurantid)
             .then((response) => response.json())
-            .then((gerechtendata) => {
-                const listEL = document.getElementById("gerechten");
+            .then((bestellingendata) => {
+                const listEL = document.getElementById("bestellingen");
                 let htmlString = "";
-                gerechtendata.forEach((gerecht) => {
-                    htmlString += template_gerecht(gerecht);
+              bestellingendata.forEach((bestelling) => {
+                    htmlString += template_bestelling(bestelling);
                 })
                 listEL.innerHTML = htmlString;
                    })
 
 
-
-// WIP: POST request met fetch
-// referentie: https://stackoverflow.com/questions/39565706/post-request-with-fetch-api#39565776
-
-window.testPost = function () { // de functie testPost wordt hier gedefinieerd via window-object om het globaal te maken. 
-    //Hij wordt geactiveerd met onclick op button.
-    console.log("Hallo dit is testPost()");
-
-    const url = 'http://backendyc2204bezorging.azurewebsites.net/gerechttoevoegen/' + restaurantid;
-
-    const nieuwGerecht = {
-        "naam": "Testaardappel9",
-        "prijs": 999,
-        "afbeelding": "https://cipotato.org/wp-content/uploads/2020/03/potatoes.jpg"
-    };
-
-    const options = {
-        method: 'POST',
-        body: JSON.stringify(nieuwGerecht),
-        headers: {
-            'Content-Type': 'application/json'
-        },
-    };
-
-
-    console.log(nieuwGerecht)
-    fetch(url, options)
-        .then(response => console.log(response))
-
-};
-
-// SAMPLE post form data met javascript
-// referentie: https://code-boxx.com/post-form-data-javascript-fetch/#sec-post
-
-window.sendData = function () {
-   //e.preventDefault();
-
-  
-
-
-    // A GET FORM DATA
-    let rawData = new FormData();
-    rawData.append("naam", document.getElementById("gerechtnaam").value);
-    rawData.append("prijs", document.getElementById("gerechtprijs").value);
-    rawData.append("afbeelding", document.getElementById("gerechturl").value);
-
-    // snippet om fordata te converteren in JSON
-    const data = {};
-    rawData.forEach((value, key) => (data[key] = value));
-    console.log(data);
-
-    
-    
-    
-    const url = 'http://backendyc2204bezorging.azurewebsites.net/gerechttoevoegen/' + restaurantid;
-
-    const options = {
-        method: 'POST',
-        body: JSON.stringify(data),
-        headers: {
-            'Content-Type': 'application/json'
-        },
-    };
-    // B INIT FETCH POST
-    fetch(url, options)
-        .then((response) => console.log(response))
-       
-
-    return false;
-}
