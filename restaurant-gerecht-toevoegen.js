@@ -27,52 +27,52 @@ function template_gerecht(gerecht) {
 }
 
 // fetch functie met lokale DUMMY data.
-fetch("./data/restaurants.json")
+// fetch("./data/restaurants.json")
   
-    .then((response) => response.json())
-    .then((restaurantdata) => {
-        const restaurant = restaurantdata.find(restaurant => restaurant.id === restaurantid);
+//     .then((response) => response.json())
+//     .then((restaurantdata) => {
+//         const restaurant = restaurantdata.find(restaurant => restaurant.id === restaurantid);
 
-        var restaurantnaam = restaurant.naam;
-        const bezNav = document.querySelector("bez-nav");
-        console.log(restaurantnaam, bezNav);
-        bezNav.title = restaurantnaam + " - Adminpagina - Gerechten toevoegen (dummylijst, formulier wel naar database)";
+//         var restaurantnaam = restaurant.naam;
+//         const bezNav = document.querySelector("bez-nav");
+//         console.log(restaurantnaam, bezNav);
+//         bezNav.title = restaurantnaam + " - Adminpagina - Gerechten toevoegen (dummylijst, formulier wel naar database)";
 
 
-        const listEL = document.getElementById("gerechten");
-        let htmlString = "";
-        restaurant.gerechten.forEach((gerecht) => {
-            htmlString += template_gerecht(gerecht);
-            console.log(gerecht);
-        })
+//         const listEL = document.getElementById("gerechten");
+//         let htmlString = "";
+//         restaurant.gerechten.forEach((gerecht) => {
+//             htmlString += template_gerecht(gerecht);
+//             console.log(gerecht);
+//         })
 
-        listEL.innerHTML = htmlString;
-    })
+//         listEL.innerHTML = htmlString;
+//     })
 
 
         // hier wordt de restaurantnaam opgehaald uit DATABASE en aan bezNav gegeven.
-    //     fetch("https://backendyc2204bezorging.azurewebsites.net/restaurantbyid/" + restaurantid)
-    //         //fetch("https://localhost:8080/restaurantbyid/" + restaurantid)
-    //         .then((response) => response.json())
-    //         .then((restaurant) => {
-    //             let restaurantnaam = restaurant.naam;
-    //             const bezNav = document.querySelector("bez-nav");
-    //             bezNav.title = restaurantnaam + " - Adminpagina - Gerechten toevoegen";
-    //         })
+        fetch("https://backendyc2204bezorging.azurewebsites.net/restaurantbyid/" + restaurantid)
+            //fetch("https://localhost:8080/restaurantbyid/" + restaurantid)
+            .then((response) => response.json())
+            .then((restaurant) => {
+                let restaurantnaam = restaurant.naam;
+                const bezNav = document.querySelector("bez-nav");
+                bezNav.title = restaurantnaam + " - Adminpagina - Gerechten toevoegen";
+            })
             
 
     //  //   hier worden de restaurantgerechten opgehaald uit DATABASE en in lijstitems gestopt.
-    //     fetch("https://backendyc2204bezorging.azurewebsites.net/toonmenu/" + restaurantid)
-    //         //fetch("https://localhost:8080/toonmenu/" + restaurantid)
-    //         .then((response) => response.json())
-    //         .then((gerechtendata) => {
-    //             const listEL = document.getElementById("gerechten");
-    //             let htmlString = "";
-    //             gerechtendata.forEach((gerecht) => {
-    //                 htmlString += template_gerecht(gerecht);
-    //             })
-    //             listEL.innerHTML = htmlString;
-    //                })
+        fetch("https://backendyc2204bezorging.azurewebsites.net/toonmenu/" + restaurantid)
+            //fetch("https://localhost:8080/toonmenu/" + restaurantid)
+            .then((response) => response.json())
+            .then((gerechtendata) => {
+                const listEL = document.getElementById("gerechten");
+                let htmlString = "";
+                gerechtendata.forEach((gerecht) => {
+                    htmlString += template_gerecht(gerecht);
+                })
+                listEL.innerHTML = htmlString;
+                   })
 
 
 
