@@ -6,7 +6,8 @@ const urlParams = new URLSearchParams(queryString);
 const restaurantid = parseInt(urlParams.get("id"), 10);
 
 // template voor lijstitems van bestelling
-function template_bestelling(bestelling) {
+function template_bestelling(bestelling, bestellingInhoud) {
+  
     return `
     <li class="flex-item">
         <div>
@@ -29,7 +30,7 @@ function template_bestelling(bestelling) {
         <div>
 
             <h3>Gerechten</h3>
-            <p>Naam: ${bestelling.gerechten}</p>
+            <p>${bestellingInhoud}</p>
        
 
 
@@ -71,7 +72,20 @@ function template_bestelling(bestelling) {
                 const listEL = document.getElementById("bestellingen");
                 let htmlString = "";
               bestellingendata.forEach((bestelling) => {
-                    htmlString += template_bestelling(bestelling);
+                    
+                    bestelling.gerechten.forEach((gerecht) =>
+                  {
+                    console.log("Er gebeurt iets.")
+                    
+                  })
+
+                   
+
+                 
+
+
+                let bestellingInhoud = "1 druif";
+                    htmlString += template_bestelling(bestelling, bestellingInhoud);
                 })
                 listEL.innerHTML = htmlString;
                    })
