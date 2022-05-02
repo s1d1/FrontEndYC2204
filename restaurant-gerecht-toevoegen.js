@@ -86,7 +86,7 @@ window.testPost = function () { // de functie testPost wordt hier gedefinieerd v
     const url = 'http://backendyc2204bezorging.azurewebsites.net/gerechttoevoegen/' + restaurantid;
 
     const nieuwGerecht = {
-        "naam": "Testaardappel8",
+        "naam": "Testaardappel9",
         "prijs": 999,
         "afbeelding": "https://cipotato.org/wp-content/uploads/2020/03/potatoes.jpg"
     };
@@ -109,17 +109,18 @@ window.testPost = function () { // de functie testPost wordt hier gedefinieerd v
 // SAMPLE post form data met javascript
 // referentie: https://code-boxx.com/post-form-data-javascript-fetch/#sec-post
 
-// window.sendData = function () {
+window.sendData = function () {
+   //e.preventDefault();
 
 
+    // A GET FORM DATA
+    let formdata = new FormData();
+    formdata.append("naam", document.getElementById("naam1").value);
+    formdata.append("prijs", document.getElementById("prijs1").value);
+    formdata.append("afbeelding", document.getElementById("afbeelding1").value);
 
-//     // A GET FORM DATA
-//     let formdata = new FormData();
-//     formdata.append("naam", document.getElementById("naam1").value);
-//     formdata.append("prijs", document.getElementById("prijs1").value);
-//     formdata.append("afbeelding", document.getElementById("afbeelding1").value);
-
-//     console.log(formdata);
+    console.log(formdata);
+    return false;
 //     const url = 'http://backendyc2204bezorging.azurewebsites.net/gerechttoevoegen/' + restaurantid;
 
 //     const options = {
@@ -134,4 +135,4 @@ window.testPost = function () { // de functie testPost wordt hier gedefinieerd v
 //         .then((result) => {
 //            console.log(response)
 //         })
-// }
+}
