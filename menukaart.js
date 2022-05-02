@@ -1,5 +1,6 @@
 import { renderWinkelmandje, setWinkelmandjeData } from './winkelmandje.js';
 
+// Met Azure Backend
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
 const restaurantid = parseInt(urlParams.get("id"), 10);
@@ -84,6 +85,10 @@ function template_gerecht(gerecht) {
 renderWinkelmandje(restaurantid);
 
 
+// Met dummy data
+// const queryString = window.location.search;
+// const urlParams = new URLSearchParams(queryString);
+// const restaurantid = parseInt(urlParams.get("id"), 10);
 
 // fetch("./data/restaurants.json")
 // .then((response) => response.json())
@@ -140,3 +145,22 @@ renderWinkelmandje(restaurantid);
 //         })
 //     })
 // })
+
+
+// function template_gerecht(gerecht) {
+//     return `
+//     <li class="flex-item">
+//         <div>
+//             <p>${gerecht.naam}</p>
+//             <p>Prijs: € ${gerecht.prijs}</p>
+//         </div>
+//         <div>
+//             <img src=${gerecht.afbeelding}>
+//         </div> 
+//         <button data-btn-add data-id="${gerecht.id}" data-prijs="${gerecht.prijs}" data-naam="${gerecht.naam}">
+//             Toevoegen
+//         </button> 
+//     </li>`
+// }
+
+// renderWinkelmandje(restaurantid); 

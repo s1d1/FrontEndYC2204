@@ -4,18 +4,22 @@ html {
     font-family: "Plus Jakarta Sans", sans-serif;
 }
 
+button {
+  font-family: "Plus Jakarta Sans", sans-serif;
+}
+
 #inhoud {
 padding-top: 40px;
 }
 
 .flex-item {
-    display: flex;
-    align-items: center;
-    width: 800px;
+  display: flex;
+  align-items: center;
+  width: 800px;
 }
 
 .flex-item > div > img { 
-    width: 200px;
+  width: 200px;
 }
 
 .flex-item :first-child {
@@ -26,27 +30,6 @@ div.header {
   background: black;
 }
 
-  /* .section-2__flex {
-    display: flex;
-    align-items: center;
-    gap: 100px;
-  }
-
-  .section-2__flex-text {
-  }
-
-  .section-2__flex-img {
-    width: 100%;
-    flex-shrink: 0;
-  }
-  .section-2__flex-img > figure {
-    width: 100%;
-  }
-  .section-2__flex-img > figure > img {
-    width: 300px;
-    height: 200px;
-  } */
-
 main {
   display: flex;
 }
@@ -56,6 +39,16 @@ main {
 }
 
 aside {
-  width: 200px;
-  background-color: yellow;
+  width: 350px;
+  background-color: rgba(255, 0, 0, 0.281);
+}
+
+.aside__title {
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.aside__list {
+  list-style-type: none;
+
 }
