@@ -89,7 +89,7 @@ function nieuweBestelling() {
   .then(response => console.log(response))
 
   // Wacht even voordat je bestelling_id gaat zoeken vanwege database updaten; anders niet meest recente bestelling
-  setTimeout(() => { bestellingID(klantid, restaurantid); }, 1000);
+  setTimeout(() => { bestellingID(klantid, restaurantid); }, 2000);
   
 }
 
@@ -144,10 +144,8 @@ function gerechtenToevoegen(id, bestellingid) {
       // Voeg elk gerecht toe voor zo vaak ze in het winkelmandje staan
       for (let i = 0; i < hoeveelheid; i ++){
         fetch(url_gerechttoevoegen, requestoptions)
-        .then(response => console.log(response))
+        .then(response => (window.location.href = "betalen.html?id=" + bestellingid))
       }
     }
   }
-  // // Open betalingspagina
-  // window.location.href = "/betalen.html/" + bestellingid;
 }
