@@ -34,3 +34,9 @@ main {
 .content {
   flex-grow: 1;
 }
+
+.bestelling {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
