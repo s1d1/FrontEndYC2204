@@ -2007,6 +2007,7 @@ a {
 .flex-row {
     display: flex;
     flex-direction: row;
+
 }
 
 .flex-wrap {
@@ -2016,6 +2017,14 @@ a {
 /* Zelf toegevoegde classes */
 
 #myNavbar {
+    justify-content: space-between;
+}
+
+#infoblok div {
+    justify-content: space-between;
+}
+
+#restaurantinfo div {
     justify-content: space-between;
 }
 
