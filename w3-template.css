@@ -2007,10 +2007,27 @@ a {
 .flex-row {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
 }
 
 .flex-wrap {
     flex-wrap: wrap;
 }
 
+/* Zelf toegevoegde classes */
+
+#myNavbar {
+    justify-content: space-between;
+}
+
+.restaurantlijstitem {
+    height: 350px;
+    justify-content: space-between
+}
+
+.restaurantlijstitem img {
+    width: 474px;
+    max-height: fit-content;
+    object-fit: cover;
+   
+
+}
