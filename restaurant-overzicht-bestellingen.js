@@ -51,6 +51,21 @@ function template_bestelling(bestelling, bestellingInhoud) {
 
 }
 
+// template voor gerechtenitems van bestelling
+function template_gerecht(gerecht) {
+  
+    return `<li>   
+    <div>   
+            <p>${gerecht.naam}</p>
+   
+        </div>
+
+         
+
+
+    </li>`
+
+}
 
 
         // hier wordt de restaurantnaam opgehaald uit DATABASE en aan bezNav gegeven.
@@ -71,20 +86,18 @@ function template_bestelling(bestelling, bestellingInhoud) {
             .then((bestellingendata) => {
                 const listEL = document.getElementById("bestellingen");
                 let htmlString = "";
+                
+
+            // binnen elke bestelling wordt er ook gelooped over de lijst van gerechten die de bestelling heeft.
               bestellingendata.forEach((bestelling) => {
-                    
-                    bestelling.gerechten.forEach((gerecht) =>
-                  {
+                    let bestellingInhoud = "";
+                    bestelling.gerechten.forEach((gerecht) => {
                     console.log("Er gebeurt iets.")
+                    bestellingInhoud += template_gerecht(gerecht);
+
                     
                   })
 
-                   
-
-                 
-
-
-                let bestellingInhoud = "1 druif";
                     htmlString += template_bestelling(bestelling, bestellingInhoud);
                 })
                 listEL.innerHTML = htmlString;
