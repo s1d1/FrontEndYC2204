@@ -60,12 +60,14 @@ function clearWinkelmandje() {
 }
 
 
-// TO DO: winkelmandje naar de backend sturen 
+// Functie om nieuw bestellingobject aan te maken
 function nieuweBestelling() {
-  // RestaurantID verkrijgen (nu hardcode)
-  let restaurantid = 1;
+  // RestaurantID ophalen uit url
+  const queryString = window.location.search;
+  const urlParams = new URLSearchParams(queryString);
+  const restaurantid = parseInt(urlParams.get("id"), 10);
 
-  // KlantID verkrijgen (nu hardcode)
+  // KlantID verkrijgen (nu hardcode; kan pas dynamisch als we klantlogin hebben)
   let klantid = 51;
 
   // Maak nieuwe bestelling aan
@@ -81,46 +83,71 @@ function nieuweBestelling() {
     headers: {
         'Content-Type': 'application/json'
     },
-};
+  };
 
-fetch(url, options)
-.then(response => console.log(response))
+  fetch(url, options)
+  .then(response => console.log(response))
 
-gerechtenToevoegen(klantid, restaurantid);
+  // Wacht even voordat je bestelling_id gaat zoeken vanwege database updaten; anders niet meest recente bestelling
+  setTimeout(() => { bestellingID(klantid, restaurantid); }, 1000);
+  
 }
 
-function gerechtenToevoegen(klantid, id) {
-  let klant_id = klantid
 
-  // Voeg gerechten aan nieuwe bestelling
-
-  // BestellingID verkrijgen
+// Functie om bestellingid van net aangemaakte bestelling te verkrijgen
+function bestellingID(klantid, id) {
   let bestelling_id;
 
-  fetch("https://backendyc2204bezorging.azurewebsites.net/geefbestellingenvanklant/" + klant_id)
+  fetch("https://backendyc2204bezorging.azurewebsites.net/geefbestellingenvanklant/" + klantid)
   .then((Response) => Response.json())
   .then((data) => {
-    var laatste_bestelling = data[(data.length - 1)]
+    let laatste_bestelling = data[(data.length - 1)]
     bestelling_id = laatste_bestelling.id
+    gerechtenToevoegen(id, bestelling_id);
   })
+}
 
-  // GerechtID verkrijgen !!!!hiergebleven 
-  const winkelmandjeData = localStorage.getItem('winkelmandje');
-  let data;
+
+// Functie om elk gerecht in het winkelmandje toe te voegen aan het bestellingobject 
+function gerechtenToevoegen(id, bestellingid) {
+  let winkelmandjeData = localStorage.getItem('winkelmandje');
+  let winkelmandje_items;
 
   if (
     winkelmandjeData && // <-- not null/undefined/false
     typeof JSON.parse(winkelmandjeData) === 'object' && // <-- {}
     typeof JSON.parse(winkelmandjeData)[id] === 'object' // <-- { 0: { .. } }
-  ) {
-    data = Object.values(JSON.parse(winkelmandjeData));
-    var inhoud_winkelmandje = data[0]
-    const gerechten_ids = Object.keys(inhoud_winkelmandje)
+    ){
+    winkelmandje_items = Object.values(JSON.parse(winkelmandjeData)); // haalt data van winkelandje op
+    let inhoud_winkelmandje = winkelmandje_items[0] // slaat de inhoud van winkelmandje op
 
+    let gerecht_id;
+    let gerecht;
+    let hoeveelheid; 
+    let url_gerechttoevoegen;
+    let requestoptions = {
+      method: 'PUT',
+      headers:{
+        'Content-Type': 'application/json'
+      },
+    }
 
+    // Voor elk gerecht in het winkelmandje
+    for (const key in inhoud_winkelmandje) {
+      // Sla gerecht_id en hoeveelheid op
+      gerecht_id = key;
+      gerecht = inhoud_winkelmandje[key]
+      hoeveelheid = gerecht.hoeveelheid
+
+      url_gerechttoevoegen = "https://backendyc2204bezorging.azurewebsites.net/voeggerechttoe/" + bestellingid + "/" + gerecht_id;
+      
+      // Voeg elk gerecht toe voor zo vaak ze in het winkelmandje staan
+      for (let i = 0; i < hoeveelheid; i ++){
+        fetch(url_gerechttoevoegen, requestoptions)
+        .then(response => console.log(response))
+      }
+    }
   }
-
-
-   //// Bestelling meegegeven aan betalingpagina
-  // window.location.href = "/betalen.html" + bestelling_id;
+  // // Open betalingspagina
+  // window.location.href = "/betalen.html/" + bestellingid;
 }
