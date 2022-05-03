@@ -9,7 +9,7 @@ const restaurantid = parseInt(urlParams.get("id"), 10);
 function template_bestelling(bestelling, bestellingInhoud) {
   
     return `
-    <li class="flex-item">
+    <div class="bestelling">
         <div>
             <h3>Bestelgegevens</h3>
             <p>#${bestelling.id}</p>
@@ -30,7 +30,10 @@ function template_bestelling(bestelling, bestellingInhoud) {
         <div>
 
             <h3>Gerechten</h3>
-            <p>${bestellingInhoud}</p>
+            
+            <ul>
+            ${bestellingInhoud}
+            </ul>
        
 
 
@@ -47,7 +50,7 @@ function template_bestelling(bestelling, bestellingInhoud) {
             Bezorger toewijzen
         </button>
 
-    </li>`
+    </div>`
 
 }
 
