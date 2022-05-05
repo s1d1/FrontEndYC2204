@@ -11,9 +11,21 @@ fetch("https://backendyc2204bezorging.azurewebsites.net/restaurantbyid/" + resta
 .then((data) => {
     const restaurant = data;
     var restaurantnaam = restaurant.naam;
-    const bezNav = document.querySelector("bez-nav");
-    bezNav.title = restaurantnaam;
+
+    const headerEL = document.getElementById("header-titel");
+    let htmlTitel = "";
+    htmlTitel += template_header(restaurantnaam);
+    headerEL.innerHTML = htmlTitel;
+
+    // const bezNav = document.querySelector("bez-nav");
+    // bezNav.title = restaurantnaam;
 });
+
+function template_header(restaurantnaam) {
+    return `
+    <h2 class="menukaart-header-titel">${restaurantnaam}</h2>
+  `
+}
 
 fetch("https://backendyc2204bezorging.azurewebsites.net/toonmenu/" + restaurantid)
 .then((Response) => Response.json())

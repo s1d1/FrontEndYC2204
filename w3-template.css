@@ -2079,6 +2079,14 @@ a {
     padding-left: 5px;
     display: flex;
   }
+
+.menukaart-header {
+    background-color: red;
+}
+
+.menukaart-header-titel {
+    color: red;
+}
   
   .menukaart-flex-item {
     display: flex;
@@ -2100,7 +2108,6 @@ a {
   
   .winkelmandje {
     width: 350px;
-    background-color: rgba(255, 0, 0, 0.281);
   }
   
   .aside__title {
@@ -2111,3 +2118,4 @@ a {
   .aside__list {
     list-style-type: none;
   }
+

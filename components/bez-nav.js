@@ -29,7 +29,7 @@ class BezNav extends HTMLElement {
   render() {
     this.shadowRoot.innerHTML = `
       <div class="menukaart-header">
-        <h1 id="restaurantnaam">${this.title}</h1>
+        <h1 class="menukaart-header-titel id="restaurantnaam">${this.title}</h1>
       </div>
     `;
   }
