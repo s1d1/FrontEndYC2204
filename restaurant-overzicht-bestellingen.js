@@ -106,12 +106,15 @@ function template_gerecht(gerecht) {
                 listEL.innerHTML = htmlString;
             })
 
+
+// Functies om bestellingen op een bepaalde status te zetten.
+
 window.statusAnnuleren = function (bestelid) {
     console.log("Hallo, dit is statusAnnuleren()")
 
     let pathvariable = bestelid;
 
-    const url = 'http://backendyc2204bezorging.azurewebsites.net/setstatus/' + pathvariable + '/4';
+    const url = 'https://backendyc2204bezorging.azurewebsites.net/setstatus/' + pathvariable + '/4';
 
     const options = {
         method: 'POST',
@@ -119,8 +122,9 @@ window.statusAnnuleren = function (bestelid) {
     };
     // B INIT FETCH POST
     fetch(url, options)
-        .then((response) => console.log(response))
-       
+        .then((response) => response.json())
+        .then((result) => console.log(result))
+  
 
     return false;
 
@@ -132,7 +136,7 @@ window.statusBereiden = function (bestelid) {
 
     let pathvariable = bestelid;
 
-    const url = 'http://backendyc2204bezorging.azurewebsites.net/setstatus/' + pathvariable + '/1';
+    const url = 'https://backendyc2204bezorging.azurewebsites.net/setstatus/' + pathvariable + '/1';
 
     const options = {
         method: 'POST',
@@ -142,8 +146,8 @@ window.statusBereiden = function (bestelid) {
     };
     // B INIT FETCH POST
     fetch(url, options)
-        .then((response) => console.log(response))
-       
+        .then((response) => response.json())
+        .then((result) => console.log(result))
 
     return false;
 
@@ -154,7 +158,7 @@ window.statusReady = function (bestelid) {
 
     let pathvariable = bestelid;
 
-    const url = 'http://backendyc2204bezorging.azurewebsites.net/setstatus/' + pathvariable + '/2';
+    const url = 'https://backendyc2204bezorging.azurewebsites.net/setstatus/' + pathvariable + '/2';
 
     const options = {
         method: 'POST',
@@ -164,7 +168,8 @@ window.statusReady = function (bestelid) {
     };
     // B INIT FETCH POST
     fetch(url, options)
-        .then((response) => console.log(response))
+        .then((response) => response.json())
+        .then((result) => console.log(result))
        
 
     return false;
