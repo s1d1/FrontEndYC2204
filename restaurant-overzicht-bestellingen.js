@@ -40,15 +40,16 @@ function template_bestelling(bestelling, bestellingInhoud) {
         </div>
 
 
-        <button>
-            Bestelling annuleren
-        </button>
-        <button>
-            Bestelling bereid
-        </button>
-        <button>
-            Bezorger toewijzen
-        </button>
+       
+    <button button type="button" onclick="statusAnnuleren(${bestelling.id})">
+    Bestelling annuleren
+    </button>
+    <button button type="button" onclick="statusBereiden(${bestelling.id})">
+    Bestelling accepteren/bereiden
+    </button>
+    <button button type="button" onclick="statusReady(${bestelling.id})">
+     Bestelling klaar/ Bezorger toewijzen
+    </button>
 
     </div>`
 
@@ -114,9 +115,7 @@ window.statusAnnuleren = function (bestelid) {
 
     const options = {
         method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
+       
     };
     // B INIT FETCH POST
     fetch(url, options)
