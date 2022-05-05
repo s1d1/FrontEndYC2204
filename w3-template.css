@@ -2004,6 +2004,7 @@ a {
 .flex-column {
     display: flex;
     flex-direction: column;
+    width: 100%;
 }
 
 .flex-row {
@@ -2016,6 +2017,10 @@ a {
     flex-wrap: wrap;
 }
 
+
+.column-width{
+    width: 100%;
+}
 /* Zelf toegevoegde classes */
 
 #myNavbar {
@@ -2051,3 +2056,10 @@ a {
     font-size: 14px;
 }
 
+.li-item{
+    width: 80%;
+}
+
+.info-background {
+    background-color: rgba(255, 0, 0, 0.534);
+}

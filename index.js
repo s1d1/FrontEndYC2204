@@ -17,14 +17,14 @@ function template(data) {
     <div class="flex-column">
         <h1><b>${data.naam}</b> </h1>
         <ul class="w3-ul w3-large">
-            <li class="w3-text-grey"><span class="material-icons">place</span>${data.adres}</li>
-            <li class="w3-text-grey"><span class="material-icons">
+            <li class="w3-text-grey w3-li li-item"><a href="http://maps.google.com/?q=${data.adres}" target="blank" style="text-decoration: none"><span class="material-icons">place</span>${data.adres}</a></li>
+            <li class="w3-text-grey w3-li li-item"><span class="material-icons">
                     schedule
-                </span> ${data.openingstijden}</li>
+                </span>${data.openingstijden}</li>
     
-            <li class="w3-text-grey"><span class="material-icons">
+            <li class="w3-text-grey w3-li li-item"><a href="tel:${data.telefoonnummer}" style="text-decoration: none"><span class="material-icons">
                     phone
-                </span>${data.telefoonnummer}</li>
+                </span>${data.telefoonnummer}</a></li>
         </ul>
     </div>
     <a href="menukaart.html?id=${data.id}"> <img src="${data.gerechten[0].afbeelding}"></a>
