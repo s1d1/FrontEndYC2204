@@ -107,13 +107,60 @@ function template_gerecht(gerecht) {
 
 window.statusAnnuleren = function () {
     console.log("Hallo, dit is statusAnnuleren()")
+
+    const url = 'http://backendyc2204bezorging.azurewebsites.net/setstatus/245/4';
+
+    const options = {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+    };
+    // B INIT FETCH POST
+    fetch(url, options)
+        .then((response) => console.log(response))
+       
+
+    return false;
+
 }
 
 
 window.statusBereiden = function () {
     console.log("Hallo, dit is statusBereiden")
+
+    const url = 'http://backendyc2204bezorging.azurewebsites.net/setstatus/244/1';
+
+    const options = {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+    };
+    // B INIT FETCH POST
+    fetch(url, options)
+        .then((response) => console.log(response))
+       
+
+    return false;
+
 }
 
 window.statusReady = function () {
     console.log("Hallo, dit is statusReady()")
+
+    const url = 'http://backendyc2204bezorging.azurewebsites.net/setstatus/244/2';
+
+    const options = {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+    };
+    // B INIT FETCH POST
+    fetch(url, options)
+        .then((response) => console.log(response))
+       
+
+    return false;
 }
