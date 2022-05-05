@@ -105,10 +105,12 @@ function template_gerecht(gerecht) {
                 listEL.innerHTML = htmlString;
             })
 
-window.statusAnnuleren = function () {
+window.statusAnnuleren = function (bestelid) {
     console.log("Hallo, dit is statusAnnuleren()")
 
-    const url = 'http://backendyc2204bezorging.azurewebsites.net/setstatus/245/4';
+    let pathvariable = bestelid;
+
+    const url = 'http://backendyc2204bezorging.azurewebsites.net/setstatus/' + pathvariable + '/4';
 
     const options = {
         method: 'POST',
@@ -126,10 +128,12 @@ window.statusAnnuleren = function () {
 }
 
 
-window.statusBereiden = function () {
+window.statusBereiden = function (bestelid) {
     console.log("Hallo, dit is statusBereiden")
 
-    const url = 'http://backendyc2204bezorging.azurewebsites.net/setstatus/244/1';
+    let pathvariable = bestelid;
+
+    const url = 'http://backendyc2204bezorging.azurewebsites.net/setstatus/' + pathvariable + '/1';
 
     const options = {
         method: 'POST',
@@ -146,10 +150,12 @@ window.statusBereiden = function () {
 
 }
 
-window.statusReady = function () {
+window.statusReady = function (bestelid) {
     console.log("Hallo, dit is statusReady()")
 
-    const url = 'http://backendyc2204bezorging.azurewebsites.net/setstatus/244/2';
+    let pathvariable = bestelid;
+
+    const url = 'http://backendyc2204bezorging.azurewebsites.net/setstatus/' + pathvariable + '/2';
 
     const options = {
         method: 'POST',
