@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+
+  <title>Restaurantnaam | Bezorgdienst.nl</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="w3-template.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <script src="./components/w3-navbar.js" type="module"></script>
+  <script src="./w3-template-index.js" type="module"></script>
+
+
+  <style>
+    body,
+    html {
+      height: 100%
+    }
+
+    body,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      font-family: "Atkinson Hyperlegible", sans-serif
+    }
+
+  
+    .bannerimg {
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-image: url("img/parelduiker.avif");
+      min-height: 90%;
+
+
+      background-attachment: fixed;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+
+
+    .bezorgimg {
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-image: url("img/bezorger.jpg");
+      min-height: 90%;
+
+      background-attachment: fixed;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+  </style>
+</head>
+
+<body>
+
+  <w3-navbar>
+    
+  </w3-navbar>
+
+  <!-- Header with image -->
+  <header class="bannerimg w3-display-container w3-grayscale-min" id="home">
+    <div class="w3-display-bottomleft w3-padding">
+      <span class="w3-tag w3-xlarge">Bezorgd van 14:00 tot 02:00</span>
+    </div>
+    <div class="w3-display-middle w3-center">
+      <span class="w3-text-white w3-hide-small" style="font-size:100px"><b>Café de Parelduiker</b></span>
+      <span class="w3-text-white w3-hide-large w3-hide-medium" style="font-size:60px"><b>Café de Parelduiker</b></span>
+      <p><a href="#menu" class="w3-button w3-xxlarge w3-black">Naar het menu</a></p>
+    </div>
+  </header>
+
+  <!-- Menu Container -->
+  <div class="w3-container w3-padding-64 w3-xxlarge" id="menu">
+    <div class="w3-content">
+
+      <h1 class="w3-center w3-jumbo" style="margin-bottom:64px">MENU</h1>
+
+      <div class="w3-container w3-padding-32 w3-white">
+        <h1><b>Pizza Margherita</b> <span class="w3-right w3-tag w3-dark-grey w3-round">$12.50</span></h1>
+        <p class="w3-text-grey">Tomaat, mozarella en basilicum
+          <span class="w3-right w3-button w3-red w3-grayscale-min w3-round">+</span>
+          <span class="w3-right w3-button w3-blue-gray w3-round">-</span>
+        </p>
+        <hr>
+
+        <h1><b>Pizza Formaggio</b> <span class="w3-right w3-tag w3-dark-grey w3-round">$15.50</span></h1>
+        <p class="w3-text-grey">Vier soorten kaas
+          <span class="w3-right w3-button w3-red w3-grayscale-min w3-round">+</span>
+          <span class="w3-right w3-button w3-blue-gray w3-round">-</span>
+        </p>
+        </p>
+        <hr>
+
+        <h1><b>Broodje kip</b> <span class="w3-right w3-tag w3-dark-grey w3-round">$15.50</span></h1>
+        <p class="w3-text-grey">Geroosterde kip, rucola, limoenmayonaise
+          <span class="w3-right w3-button w3-red w3-grayscale-min w3-round">+</span>
+          <span class="w3-right w3-button w3-blue-gray w3-round">-</span>
+        </p>
+        </p>
+        <hr>
+
+      </div>
+
+
+    </div>
+  </div>
+
+  <!-- Restaurantinfo container -->
+  <div class="w3-container w3-padding-64 w3-red w3-grayscale w3-xlarge" id="restaurantinfo">
+    <div class="w3-content">
+      <h1><b>Onderstaand dynamisch inladen</b></h1>
+
+      <h1 class="w3-center w3-jumbo" style="margin-bottom:64px">Café de Parelduiker</h1>
+    
+      <p>Korte omschrijving van Café de Parelduiker. Lorem ipsum dolor sit amet, consectetur
+        adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+
+      
+      <h1><b>Bezorgtijden</b></h1>
+      <div class="flex-row flex-wrap">
+        <div class="flex-column">
+          <p>Maandag & Dinsdag GESLOTEN</p>
+          <p>Woensdag 10.00 - 24.00</p>
+          <p>Donderdag 10:00 - 24:00</p>
+        </div>
+        <div class="flex-column">
+          <p>Vrijdag 10:00 - 12:00</p>
+          <p>Zaterdag 10:00 - 23:00</p>
+          <p>Zondag GESLOTEN</p>
+        </div>
+      </div>
+      <h1><b>Restaurantgegevens</b></h1> 
+      <p>adres</p>
+      <p>telefoonnummer</p>
+      
+      
+    </div>
+
+  </div>
+
+
+
+
+  <!-- Banner voor infoblokje met bewegend beeld-->
+  <div class="bezorgimg w3-container w3-padding-64 w3-xlarge" id="infobanner">
+    <div class="w3-content flex-column">
+      <div>
+        <h1 class="w3-center w3-jumbo w3-tag" style="margin-bottom:64px">
+          Over Bezorgdienst
+        </h1>
+      </div>
+
+
+
+    </div>
+  </div>
+
+  <!-- Infoblok -->
+  <div class="w3-container w3-padding-64 w3-blue-grey w3-xlarge" id="infoblok">
+    <div class="w3-content">
+
+
+      <div>
+
+        <div>
+          <h2><strong>Ons verhaal:</strong></h2>
+          <p>Korte tekst over de Bezorgdienst. Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+            sed do eiusmod tempor incididunt ut
+            labore et dolore magna aliqua. Quam elementum pulvinar etiam non quam. Imperdiet massa
+            tincidunt nunc pulvinar sapien et.</p>
+        </div>
+
+      </div>
+
+
+
+      <div class="flex-row flex-wrap">
+
+        <div>
+          <h2><strong>Volg ons op social media:</strong></h2>
+          <p><span class="w3-tag">Facebook</span></p>
+          <p></p><span class="w3-tag">Twitter</span></p>
+          <p></p><span class="w3-tag">Instagram</span></p>
+        </div>
+
+        <div>
+          <h2><strong>Samenwerken met bezorgdienst:</strong></h2>
+          <p><span class="w3-tag">Je restaurant toevoegen</span></p>
+          <p></p><span class="w3-tag">Aanmelden als bezorger</span></p>
+        </div>
+      </div>
+
+
+
+
+    </div>
+  </div>
+
+
+
+
+  <!-- Footer -->
+  <footer class="w3-center w3-black w3-padding-48 w3-xxlarge">
+    <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank"
+        class="w3-hover-text-green">w3.css</a></p>
+  </footer>
+
+  <script>
+    // Tabbed Menu
+    function openMenu(evt, menuName) {
+      var i, x, tablinks;
+      x = document.getElementsByClassName("menu");
+      for (i = 0; i < x.length; i++) {
+        x[i].style.display = "none";
+      }
+      tablinks = document.getElementsByClassName("tablink");
+      for (i = 0; i < x.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" w3-red", "");
+      }
+      document.getElementById(menuName).style.display = "block";
+      evt.currentTarget.firstElementChild.className += " w3-red";
+    }
+    document.getElementById("myLink").click();
+  </script>
+
+</body>
+
+</html>
