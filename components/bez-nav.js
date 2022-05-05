@@ -28,24 +28,7 @@ class BezNav extends HTMLElement {
 
   render() {
     this.shadowRoot.innerHTML = `
-      <style>
-        .header {
-          position: sticky;
-          background: linear-gradient(90deg, rgba(62,9,9,1) 0%, rgba(121,9,9,1) 40%, rgba(182,19,81,1) 91%);
-          padding-top: 20px;
-          padding-bottom: 20px;
-          padding-left: 10px;
-        }
-      
-        .header > h1 {
-          color: rgb(230, 230, 230);
-        }
-
-        aside {
-          background-color: green;
-        }
-      </style>
-      <div class="header">
+      <div class="menukaart-header">
         <h1 id="restaurantnaam">${this.title}</h1>
       </div>
     `;

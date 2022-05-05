@@ -67,7 +67,7 @@ fetch("https://backendyc2204bezorging.azurewebsites.net/toonmenu/" + restauranti
 
 function template_gerecht(gerecht) {
     return `
-    <li class="flex-item">
+    <li class="menukaart-flex-item">
         <div>
             <p>${gerecht.naam}</p>
             <p>Prijs: € ${gerecht.prijs}</p>
