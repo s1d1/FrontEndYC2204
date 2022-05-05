@@ -39,17 +39,15 @@ class w3NavBar extends HTMLElement {
       <div class="w3-top">
       <div class="flex-row w3-bar w3-xlarge w3-black w3-grayscale-max w3-opacity w3-hover-opacity-off" id="myNavbar">
          
-              <a href="#" class="w3-bar-item w3-button"><span class="material-icons w3-xxlarge">
+              <a href="index.html" class="w3-bar-item w3-button"><span class="material-icons w3-xxlarge">
                       home
                   </span></a>
-              <a href="#restaurants" class="w3-bar-item w3-button">Restaurants</a>
-              <a href="#info" class="w3-bar-item w3-button">Over ons</a>
+              <a href="overzicht-restaurants.html" class="w3-bar-item w3-button">Restaurants</a>
+              <a href="#infoblok" class="w3-bar-item w3-button">Over ons</a>
        
 
               <a href="#" class="w3-bar-item w3-button">Inloggen</a>
-              <a href="#" class="w3-bar-item w3-button"><span class="material-icons w3-xxlarge">
-                      shopping_bag
-                  </span></a>
+
               
   
       </div>
@@ -58,3 +56,10 @@ class w3NavBar extends HTMLElement {
     }
   }
   customElements.define('w3-navbar', w3NavBar);
+
+
+// HTML voor winkelmandje icoon
+
+//   <a href="#" class="w3-bar-item w3-button"><span class="material-icons w3-xxlarge">
+//   shopping_bag
+// </span></a>

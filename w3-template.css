@@ -156,7 +156,7 @@ button,
 [type=button],
 [type=reset],
 [type=submit] {
-    -webkit-appearance: button
+    -webkit-appearance: button,
 }
 
 button::-moz-focus-inner,
@@ -370,7 +370,8 @@ a {
     background-color: inherit;
     text-align: center;
     cursor: pointer;
-    white-space: nowrap
+    white-space: nowrap;
+    border-radius: 4px;
 }
 
 .w3-btn:hover {
@@ -406,12 +407,13 @@ a {
 
 .w3-badge,
 .w3-tag {
-    background-color: #000;
+    background-color: rgba(0, 0, 0, 0.418);
     color: #fff;
     display: inline-block;
     padding-left: 8px;
     padding-right: 8px;
-    text-align: center
+    text-align: center;
+    border-radius: 4px;
 }
 
 .w3-badge {
@@ -2002,6 +2004,7 @@ a {
 .flex-column {
     display: flex;
     flex-direction: column;
+    width: 100%;
 }
 
 .flex-row {
@@ -2014,6 +2017,10 @@ a {
     flex-wrap: wrap;
 }
 
+
+.column-width{
+    width: 100%;
+}
 /* Zelf toegevoegde classes */
 
 #myNavbar {
@@ -2039,4 +2046,20 @@ a {
     object-fit: cover;
    
 
+}
+
+.info-p {
+    font-size: 16px;
+}
+
+.footer-p {
+    font-size: 14px;
+}
+
+.li-item{
+    width: 80%;
+}
+
+.info-background {
+    background-color: rgba(255, 0, 0, 0.534);
 }
