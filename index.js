@@ -17,7 +17,7 @@ function template(data) {
     <div class="flex-column">
         <h1><b>${data.naam}</b> </h1>
         <ul class="w3-ul w3-large">
-            <li class="w3-text-grey "><span class="material-icons">place</span>${data.adres}</li>
+            <li class="w3-text-grey"><span class="material-icons">place</span>${data.adres}</li>
             <li class="w3-text-grey"><span class="material-icons">
                     schedule
                 </span> ${data.openingstijden}</li>
