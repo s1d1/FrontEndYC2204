@@ -105,4 +105,15 @@ function template_gerecht(gerecht) {
                 listEL.innerHTML = htmlString;
             })
 
+window.statusAnnuleren = function () {
+    console.log("Hallo, dit is statusAnnuleren()")
+}
 
+
+window.statusBereiden = function () {
+    console.log("Hallo, dit is statusBereiden")
+}
+
+window.statusReady = function () {
+    console.log("Hallo, dit is statusReady()")
+}
