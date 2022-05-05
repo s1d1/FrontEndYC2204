@@ -83,14 +83,13 @@ function template_gerecht(gerecht) {
             
 
     //   hier worden de bestellingen van het restaurant opgehaald uit DATABASE en in lijstitems gestopt.
-        fetch("https://backendyc2204bezorging.azurewebsites.net/toonresbestellingen/" + restaurantid)
+        fetch("https://backendyc2204bezorging.azurewebsites.net/geefbestellingenvanres/" + restaurantid)
             //fetch("https://localhost:8080/toonmenu/" + restaurantid)
             .then((response) => response.json())
             .then((bestellingendata) => {
                 const listEL = document.getElementById("bestellingen");
                 let htmlString = "";
                 
-
             // binnen elke bestelling wordt er ook gelooped over de lijst van gerechten die de bestelling heeft.
               bestellingendata.forEach((bestelling) => {
                     let bestellingInhoud = "";
@@ -104,6 +103,6 @@ function template_gerecht(gerecht) {
                     htmlString += template_bestelling(bestelling, bestellingInhoud);
                 })
                 listEL.innerHTML = htmlString;
-                   })
+            })
 
 
