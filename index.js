@@ -27,7 +27,7 @@ function template(data) {
                 </span>${data.telefoonnummer}</a></li>
         </ul>
     </div>
-    <a href="menukaart.html?id=${data.id}"> <img src="${data.gerechten[0].afbeelding}"></a>
+    <div class="image-box"><a href="menukaart.html?id=${data.id}"> <img src="${data.logo}"></a></div>
   </div>
   `;
 }
