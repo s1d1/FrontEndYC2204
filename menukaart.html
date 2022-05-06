@@ -44,19 +44,52 @@
         }
       }
     </script>
+    <style>
+      body,
+      html {
+        height: 100%;
+      }
+
+      body,
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-family: "Atkinson Hyperlegible", sans-serif;
+      }
+
+      .bannerimg {
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-image: url("/img/banner.avif");
+        min-height: 100%;
+
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+    </style>
   </head>
   <body>
-    <header>
-      <w3-navbar></w3-navbar>
-      <div id="header-titel"></div>
+    <!-- Navigation -->
+    <w3-navbar></w3-navbar>
+    <!-- Header with image -->
+    <header class="bannerimg w3-display-container w3-grayscale-min" id="home">
+      <div id="header"></div>
     </header>
-    <main class="menukaart-main">
+    <!-- Menu with ingredients -->
+    <main class="menukaart-main" id="menu">
       <div class="menukaart-content">
         <h2>Gerechten</h2>
-        <ul class="list-gerechten" id="gerechten"></ul>
+        <ul class="list-gerechten" id="gerechten">
+          <!-- Lijst van gerechten van restaurant-->
+        </ul>
       </div>
       <aside class="winkelmandje">
-        <div id="div-aside">
+        <div id="div-aside" style="z-index: 1; position: relative">
           <p
             id="titel"
             class="aside__title w3-blue-grey"
@@ -72,6 +105,7 @@
         </div>
       </aside>
     </main>
+    <!-- Footer component-->
     <footer>
       <bez-footer></bez-footer>
     </footer>

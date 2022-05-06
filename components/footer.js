@@ -35,7 +35,7 @@ class Footer extends HTMLElement {
         href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&display=swap"
         rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <footer class="w3-center w3-black w3-padding-small w3-xxlarge">
+    <footer class="w3-center w3-black w3-padding-small w3-xxlarge" style="z-index:2; position: relative">
       <p class="footer-p">
         Powered by
         <a

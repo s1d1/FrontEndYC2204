@@ -37,7 +37,7 @@ class w3NavBar extends HTMLElement {
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
       <div class="w3-top">
-      <div class="flex-row w3-bar w3-xlarge w3-black w3-grayscale-max w3-opacity w3-hover-opacity-off" id="myNavbar">
+      <div style="z-index: 3; position: relative" class="flex-row w3-bar w3-xlarge w3-black w3-grayscale-max w3-opacity w3-hover-opacity-off" id="myNavbar">
          
               <a href="index.html" class="w3-bar-item w3-button"><span class="material-icons w3-xxlarge">
                       home

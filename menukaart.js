@@ -12,21 +12,31 @@ fetch("https://backendyc2204bezorging.azurewebsites.net/restaurantbyid/" + resta
 .then((data) => {
     const restaurant = data;
     var restaurantnaam = restaurant.naam;
+    var openingstijden = restaurant.openingstijden;
 
-    const headerEL = document.getElementById("header-titel");
-    let htmlTitel = "";
-    htmlTitel += template_header(restaurantnaam);
-    headerEL.innerHTML = htmlTitel;
+    const headerEL = document.getElementById("header");
+    // let htmlTitel = "";
+    // let htmlTitel = template_header(restaurantnaam, openingstijden);
+    headerEL.innerHTML = template_header(restaurantnaam, openingstijden);
 
     // const bezNav = document.querySelector("bez-nav");
     // bezNav.title = restaurantnaam;
 });
 
-function template_header(restaurantnaam) {
+function template_header(restaurantnaam, openingstijden) {
     return `
-    <h2 class="menukaart-header-titel">${restaurantnaam}</h2>
+    <div class="w3-display-bottomleft w3-padding">
+        <span class="w3-tag w3-xlarge">Bezorgingstijden: ${openingstijden}</span>
+        </div>
+        <div class="w3-display-middle w3-center" style="padding-top: 20px;">
+        <span class="w3-text-white w3-hide-small" style="font-size:100px"><b>${restaurantnaam}</b></span>
+        <span class="w3-text-white w3-hide-large w3-hide-medium" style="font-size:60px"><b>${restaurantnaam}</b></span>
+        <p><a href="#menu" class="w3-button w3-xlarge w3-black">Naar het menu</a></p>
+    </div>
   `
 }
+
+{/* <h2 class="menukaart-header-titel">${restaurantnaam}</h2> */}
 
 fetch("https://backendyc2204bezorging.azurewebsites.net/toonmenu/" + restaurantid)
 .then((Response) => Response.json())
