@@ -2119,14 +2119,13 @@ a {
   
   .aside__title {
     font-weight: bold;
-    font-size: 20px;
+    font-size: 21px;
     padding-left: 5px;
     padding-right: 5px;
   }
   
   .aside__list {
     list-style-type: none;
-
   }
 
   .winkeldiv{ 
@@ -2136,6 +2135,23 @@ a {
   .btn-toevoegen{
       margin-left: 10px;
       font-size: 22px;
+
+      border: none;
+      display: inline-block;
+      padding: 8px 16px;
+      vertical-align: middle;
+      overflow: hidden;
+      text-decoration: none;
+      color: inherit;
+      background-color: transparent;
+      text-align: center;
+      cursor: pointer;
+      white-space: nowrap;
+      border-radius: 4px;
+  }
+
+  .btn-toevoegen:hover{
+      background-color: rgba(1, 110, 1, 0.233);
   }
 
   .prijs-font {
