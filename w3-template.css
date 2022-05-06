@@ -2078,7 +2078,7 @@ a {
 .menukaart-main {
     padding-left: 5px;
     display: flex;
-    height: 100vh;
+    justify-content: space-between;
   }
 
 .menukaart-header {
@@ -2098,18 +2098,16 @@ a {
     display: flex;
     align-items: center;
     width: 800px;
+    padding-top: 10px;
   }
-  
+
   .menukaart-flex-item > div > img { 
     width: 200px;
   }
   
   .menukaart-flex-item :first-child {
     flex-grow: 1;
-  }
-  
-  .menukaart-content {
-    flex-grow: 1;
+    padding-top: 0;
   }
   
   .winkelmandje {
@@ -2131,4 +2129,8 @@ a {
 
   .winkeldiv{ 
       height: 100%;
+  }
+
+  .btn-toevoegen{
+      margin-left: 10px;
   }

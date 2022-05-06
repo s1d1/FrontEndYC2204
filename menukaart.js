@@ -81,7 +81,7 @@ fetch("https://backendyc2204bezorging.azurewebsites.net/toonmenu/" + restauranti
 function template_gerecht(gerecht) {
     return `
     <li class="menukaart-flex-item">
-        <div>
+        <div >
             <p>${gerecht.naam}</p>
             <p>Prijs: € ${gerecht.prijs}</p>
         </div>
@@ -89,7 +89,7 @@ function template_gerecht(gerecht) {
         <div>
             <img src=${gerecht.afbeelding}>
         </div> 
-        <button data-btn-add data-id="${gerecht.id}" data-prijs="${gerecht.prijs}" data-naam="${gerecht.naam}">
+        <button class="w3-button btn-toevoegen" data-btn-add data-id="${gerecht.id}" data-prijs="${gerecht.prijs}" data-naam="${gerecht.naam}">
             Toevoegen
         </button> 
     </li>`
