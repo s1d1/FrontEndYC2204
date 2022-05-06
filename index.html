@@ -19,6 +19,8 @@
     />
     <script src="./index.js" type="module"></script>
     <script src="./components/w3-navbar.js" type="module"></script>
+    <script src="./components/footer.js" type="module"></script>
+    <script src="./components/infoblok.js" type="module"></script>
     <style>
       body,
       html {
@@ -123,66 +125,8 @@
     </div>
 
     <!-- Infoblok -->
-    <div class="w3-container w3-padding-64 w3-blue-grey w3-xlarg" id="infoblok">
-      <div class="w3-content">
-        <div>
-          <div>
-            <h3><strong>Ons verhaal:</strong></h3>
-            <p class="info-p">
-              Bezorgdienst is ontstaan vanuit de behoefte van restaurants en
-              bezorgers om samen te komen onder één platform. Bezorgdienst is
-              een service waar zowel klanten, restaurants en bezorgers samen
-              kunnen komen en waar klanten snel en eenvoudig bij hun favoriete
-              restaurants kunnen bestellen. Bezorgdienst is een product gemaakt
-              door vier programmeurs met verschillende achtergronden. Dankzij
-              deze diversiteit is Bezorgservice een complete en
-              gebruiksvriendelijke applicatie.
-            </p>
-          </div>
-        </div>
-        <div class="flex-row flex-wrap">
-          <div>
-            <h3><strong>Volg ons op social media:</strong></h3>
-            <a href="https://www.facebook.com/" target="_blank"
-              ><p class="info-p"><span class="w3-tag">Facebook</span></p></a
-            >
-            <a href="https://www.Twitter.com/" target="_blank"
-              ><p class="info-p"><span class="w3-tag">Twitter</span></p></a
-            >
-            <a href="https://www.Instagram.com/" target="_blank"
-              ><p class="info-p"><span class="w3-tag">Instagram</span></p></a
-            >
-          </div>
-          <div>
-            <h3><strong>Samenwerken met bezorgdienst:</strong></h3>
-            <a href="#">
-              <p class="info-p">
-                <span class="w3-tag">Je restaurant toevoegen</span>
-              </p></a
-            >
-            <a href="#">
-              <p class="info-p">
-                <span class="w3-tag">Aanmelden als bezorger</span>
-              </p></a
-            >
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Footer TODO: In herbruikbaar component zetten-->
-    <footer class="w3-center w3-black w3-padding-16 w3-xxlarge">
-      <p class="footer-p">
-        Powered by
-        <a
-          href="https://www.w3schools.com/w3css/default.asp"
-          title="W3.CSS"
-          target="_blank"
-          class="w3-hover-text-green footer-p"
-          >w3.css</a
-        >
-      </p>
-    </footer>
+    <bez-infoblok></bez-infoblok>
+    <bez-footer></bez-footer>
   </body>
   <script>
     // Tabbed Menu

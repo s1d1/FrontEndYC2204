@@ -956,7 +956,7 @@ a {
 .w3-bottom {
     position: fixed;
     width: 100%;
-    z-index: 1
+    z-index:3;
 }
 
 .w3-top {
@@ -2031,9 +2031,9 @@ a {
     justify-content: space-between;
 }
 
-#restaurantinfo div {
+/* #restaurantinfo div {
     justify-content: space-between;
-}
+} */
 
 .restaurantlijstitem {
     height: 350px;
@@ -2076,46 +2076,89 @@ a {
 /* Menukaart */
 
 .menukaart-main {
-    padding-left: 5px;
+    padding-left: 20px;
+    padding-bottom: 20px;
     display: flex;
+    justify-content: space-between;
   }
 
-.menukaart-header {
-    background-color: red;
-}
+  .menukaart-content {
+      padding-top: 20px;
+  }
 
 .menukaart-header-titel {
-    color: red;
+    color: black;
+    font-weight: bold;
+    font-size: 36px;
+    margin-top: 60px;
+    padding-left: 5px;
+
 }
   
   .menukaart-flex-item {
     display: flex;
     align-items: center;
-    width: 800px;
+    width: 1200px;
+    padding-top: 10px;
   }
-  
-  .menukaart-flex-item > div > img { 
+
+  .gerecht-img { 
     width: 200px;
+    margin-left: 30px;
   }
   
   .menukaart-flex-item :first-child {
     flex-grow: 1;
-  }
-  
-  .menukaart-content {
-    flex-grow: 1;
+    padding-top: 0;
   }
   
   .winkelmandje {
     width: 350px;
+    height: auto;
   }
   
   .aside__title {
     font-weight: bold;
-    font-size: 20px;
+    font-size: 21px;
+    padding-left: 5px;
+    padding-right: 5px;
   }
   
   .aside__list {
     list-style-type: none;
   }
 
+  .winkeldiv{ 
+      height: 100%;
+  }
+
+  .btn-toevoegen{
+      margin-left: 10px;
+      font-size: 22px;
+
+      border: none;
+      display: inline-block;
+      padding: 8px 16px;
+      vertical-align: middle;
+      overflow: hidden;
+      text-decoration: none;
+      color: inherit;
+      background-color: transparent;
+      text-align: center;
+      cursor: pointer;
+      white-space: nowrap;
+      border-radius: 4px;
+  }
+
+  .btn-toevoegen:hover{
+      background-color: rgba(1, 110, 1, 0.233);
+  }
+
+  .prijs-font {
+      font-size: 24px;
+  }
+
+  .restaurantinfo-padding {
+      padding-left: 50px;
+      padding-right: 50px;
+  }

@@ -14,8 +14,8 @@ function mandjeTemplate(data){
       return acc + (curr.hoeveelheid * curr.prijs);
     }, 0)}
     </p>
-    <button id="winkelmandje-clear">Winkelmandje legen</button>
-    <button id="winkelmandje-betalen"> Betalen </button> 
+    <button class="w3-button" id="winkelmandje-clear">Winkelmandje legen</button>
+    <button class="w3-button" id="winkelmandje-betalen"> Betalen </button> 
   `
 }
 
