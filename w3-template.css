@@ -2098,12 +2098,13 @@ a {
   .menukaart-flex-item {
     display: flex;
     align-items: center;
-    width: 800px;
+    width: 1200px;
     padding-top: 10px;
   }
 
-  .menukaart-flex-item > div > img { 
+  .gerecht-img { 
     width: 200px;
+    margin-left: 30px;
   }
   
   .menukaart-flex-item :first-child {
@@ -2134,4 +2135,9 @@ a {
 
   .btn-toevoegen{
       margin-left: 10px;
+      font-size: 22px;
+  }
+
+  .prijs-font {
+      font-size: 24px;
   }

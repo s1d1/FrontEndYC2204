@@ -36,8 +36,6 @@ function template_header(restaurantnaam, openingstijden) {
   `
 }
 
-{/* <h2 class="menukaart-header-titel">${restaurantnaam}</h2> */}
-
 fetch("https://backendyc2204bezorging.azurewebsites.net/toonmenu/" + restaurantid)
 .then((Response) => Response.json())
 .then((gerechten) => {
@@ -91,22 +89,28 @@ fetch("https://backendyc2204bezorging.azurewebsites.net/toonmenu/" + restauranti
 function template_gerecht(gerecht) {
     return `
     <li class="menukaart-flex-item">
-        <div >
-            <p>${gerecht.naam}</p>
-            <p>Prijs: € ${gerecht.prijs}</p>
-        </div>
-
-        <div>
-            <img src=${gerecht.afbeelding}>
-        </div> 
-        <button class="w3-button btn-toevoegen" data-btn-add data-id="${gerecht.id}" data-prijs="${gerecht.prijs}" data-naam="${gerecht.naam}">
+        <h2><b>${gerecht.naam}</b></h2> <span class="w3-right w3-tag w3-dark-grey w3-round prijs-font">€ ${gerecht.prijs}</span>
+        <img class="gerecht-img" src=${gerecht.afbeelding}>
+        <button class="w3-button btn-toevoegen" data-btn-add data-id="${gerecht.id}" data-prijs="${gerecht.prijs}" data-naam="${gerecht.naam}" onclick="open_winkelmandje()">
             Toevoegen
-        </button> 
+        </button>
     </li>`
 }
 
 renderWinkelmandje(restaurantid);
 
+
+{/* <div >
+<p>${gerecht.naam}</p>
+<p>Prijs: € ${gerecht.prijs}</p>
+</div>
+
+<div>
+<img class="gerecht-img" src=${gerecht.afbeelding}>
+</div> 
+<button class="w3-button btn-toevoegen" data-btn-add data-id="${gerecht.id}" data-prijs="${gerecht.prijs}" data-naam="${gerecht.naam}">
+Toevoegen
+</button>  */}
 
 
 // Met dummy data
