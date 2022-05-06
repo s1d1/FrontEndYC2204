@@ -1,5 +1,6 @@
 import { renderWinkelmandje, setWinkelmandjeData } from './winkelmandje.js';
 
+
 // Met Azure Backend
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
@@ -95,6 +96,7 @@ function template_gerecht(gerecht) {
 }
 
 renderWinkelmandje(restaurantid);
+
 
 
 // Met dummy data

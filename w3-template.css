@@ -2078,6 +2078,7 @@ a {
 .menukaart-main {
     padding-left: 5px;
     display: flex;
+    height: 100vh;
   }
 
 .menukaart-header {
@@ -2085,7 +2086,12 @@ a {
 }
 
 .menukaart-header-titel {
-    color: red;
+    color: black;
+    font-weight: bold;
+    font-size: 36px;
+    margin-top: 60px;
+    padding-left: 5px;
+
 }
   
   .menukaart-flex-item {
@@ -2108,14 +2114,21 @@ a {
   
   .winkelmandje {
     width: 350px;
+    height: auto;
   }
   
   .aside__title {
     font-weight: bold;
     font-size: 20px;
+    padding-left: 5px;
+    padding-right: 5px;
   }
   
   .aside__list {
     list-style-type: none;
+
   }
 
+  .winkeldiv{ 
+      height: 100%;
+  }
