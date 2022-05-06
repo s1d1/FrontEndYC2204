@@ -2031,9 +2031,9 @@ a {
     justify-content: space-between;
 }
 
-#restaurantinfo div {
+/* #restaurantinfo div {
     justify-content: space-between;
-}
+} */
 
 .restaurantlijstitem {
     height: 350px;
@@ -2140,4 +2140,9 @@ a {
 
   .prijs-font {
       font-size: 24px;
+  }
+
+  .restaurantinfo-padding {
+      padding-left: 50px;
+      padding-right: 50px;
   }

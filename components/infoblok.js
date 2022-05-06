@@ -30,12 +30,12 @@ class Infoblok extends HTMLElement {
       this.shadowRoot.innerHTML = `
       <link rel="stylesheet" href="w3-template.css">
       <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link
         href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&display=swap"
         rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-      <div class="w3-container w3-padding-64 w3-blue-grey w3-xlarg" id="infoblok">
+      <div class="w3-container w3-padding-16 w3-blue-grey w3-xlarge" id="infoblok">
       <div class="w3-content">
         <div>
           <div>
