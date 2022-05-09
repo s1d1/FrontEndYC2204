@@ -6,6 +6,7 @@ fetch("https://backendyc2204bezorging.azurewebsites.net/toonrestaurants/")
     let htmlString = "";
     restaurants.forEach((restaurant) => {
       htmlString += template(restaurant);
+      console.log(restaurant.gerechten[0]);
     });
     listEl.innerHTML = htmlString;
   });
@@ -21,7 +22,7 @@ function template(data) {
           <p>${data.adres}</p>
         </div>
         <div>
-          <img class="plaatje" src="${data.gerechten[0].afbeelding}" />
+        <img class="plaatje" src="${data.gerechten[0].afbeelding}" />
         </div>
       </a>
     </li>
