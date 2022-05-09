@@ -9,7 +9,7 @@ const restaurantid = parseInt(urlParams.get("id"), 10);
 function template_bestelling(bestelling, bestellingInhoud) {
   
     return `
-    <div class="bestelling">
+    <div class="bestelling" id="${bestelling.id}">
         <div>
             <h3>Bestelgegevens</h3>
             <p>#${bestelling.id}</p>
@@ -48,6 +48,9 @@ function template_bestelling(bestelling, bestellingInhoud) {
     <button button type="button" onclick="statusBereiden(${bestelling.id})">
     Bestelling accepteren/bereiden
     </button>
+
+    <select id="bezorger_dropdown">
+    </select>
 
     <button button type="button" onclick="statusReady(${bestelling.id})">
      Bestelling klaar/ Bezorger toewijzen
