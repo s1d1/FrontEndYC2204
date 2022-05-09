@@ -5,12 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="./menukaart.js" type="module"></script>
-    <link rel="stylesheet" href="menukaart.css" />
     <title>Menukaart</title>
-    <script src="./components/bez-nav.js" type="module"></script>
     <script src="./winkelmandje.js" type="module"></script>
     <script src="./components/w3-navbar.js" type="module"></script>
-    <!-- <link rel="stylesheet" href="w3-template.css" /> -->
+    <script src="./components/footer.js" type="module"></script>
+    <script src="./components/infoblok.js" type="module"></script>
+    <link rel="stylesheet" href="w3-template.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -21,21 +21,113 @@
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet"
     />
+    <link
+      rel="stylesheet"
+      href="https://fonts.sandbox.google.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0"
+    />
+    <script>
+      function show_winkelmandje() {
+        var titel = document.getElementById("titel");
+        var achtergrond = document.getElementById("div-aside");
+        var winkelmandje = document.getElementById("winkelmandje-container");
+        if (winkelmandje.style.display === "none") {
+          winkelmandje.style.display = "block";
+          achtergrond.classList.add("w3-blue-grey");
+          achtergrond.classList.add("winkeldiv");
+          titel.innerHTML =
+            "Winkelmandje<span class='material-symbols-outlined'>arrow_drop_up</span>";
+        } else {
+          winkelmandje.style.display = "none";
+          achtergrond.classList.remove("w3-blue-grey");
+          achtergrond.classList.remove("winkeldiv");
+          titel.innerHTML =
+            "Winkelmandje<span class='material-symbols-outlined'>arrow_drop_down</span>";
+        }
+      }
+
+      function open_winkelmandje() {
+        var titel = document.getElementById("titel");
+        var achtergrond = document.getElementById("div-aside");
+        var winkelmandje = document.getElementById("winkelmandje-container");
+        if (winkelmandje.style.display === "none") {
+          winkelmandje.style.display = "block";
+          achtergrond.classList.add("w3-blue-grey");
+          achtergrond.classList.add("winkeldiv");
+          titel.innerHTML =
+            "Winkelmandje<span class='material-symbols-outlined'>arrow_drop_up</span>";
+        }
+      }
+    </script>
+    <style>
+      body,
+      html {
+        height: 100%;
+      }
+
+      body,
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-family: "Atkinson Hyperlegible", sans-serif;
+      }
+
+      .bannerimg {
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-image: url("/img/banner.avif");
+        min-height: 100%;
+
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+    </style>
   </head>
   <body>
+    <!-- Navigatie -->
     <w3-navbar></w3-navbar>
-    <bez-nav></bez-nav>
-    <main>
-      <div class="content">
-        <h2>Gerechten</h2>
-        <ul class="list" id="gerechten"></ul>
+    <!-- Header met image -->
+    <header class="bannerimg w3-display-container w3-grayscale-min" id="home">
+      <div id="header"></div>
+    </header>
+    <!-- Menu -->
+    <h1 class="w3-center w3-jumbo" id="menu" style="font-weight: bold">Menu</h1>
+    <main class="menukaart-main">
+      <div class="w3-container">
+        <div class="w3-content">
+          <div class="w3-container w3-padding-32 w3-white">
+            <ul id="gerechten"></ul>
+          </div>
+        </div>
       </div>
+      <!-- Winkelmandje-->
       <aside class="winkelmandje">
-        <p class="aside__title">Winkelmandje</p>
-        <div id="winkelmandje-container">
-          <!-- Winkelmandje of "winkelmandje is leeg"-->
+        <div id="div-aside" style="z-index: 1; position: relative">
+          <p
+            id="titel"
+            class="aside__title w3-blue-grey"
+            onclick="show_winkelmandje()"
+          >
+            Winkelmandje<span class="material-symbols-outlined">
+              arrow_drop_down
+            </span>
+          </p>
+          <div id="winkelmandje-container" style="display: none"></div>
         </div>
       </aside>
     </main>
+    <!-- Restaurantinfo -->
+    <div
+      id="restaurantinfo"
+      class="w3-container w3-padding-16 w3-red w3-grayscale w3-large"
+    ></div>
+    <!-- Infoblok -->
+    <bez-infoblok></bez-infoblok>
+    <!-- Footer -->
+    <bez-footer></bez-footer>
   </body>
 </html>
