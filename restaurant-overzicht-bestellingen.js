@@ -44,9 +44,11 @@ function template_bestelling(bestelling, bestellingInhoud) {
     <button button type="button" onclick="statusAnnuleren(${bestelling.id})">
     Bestelling annuleren
     </button>
+    
     <button button type="button" onclick="statusBereiden(${bestelling.id})">
     Bestelling accepteren/bereiden
     </button>
+
     <button button type="button" onclick="statusReady(${bestelling.id})">
      Bestelling klaar/ Bezorger toewijzen
     </button>
@@ -111,7 +113,6 @@ function template_gerecht(gerecht) {
 
 window.statusAnnuleren = function (bestelid) {
     console.log("Hallo, dit is statusAnnuleren()")
-
     let pathvariable = bestelid;
 
     const url = 'https://backendyc2204bezorging.azurewebsites.net/setstatus/' + pathvariable + '/4';
@@ -123,7 +124,20 @@ window.statusAnnuleren = function (bestelid) {
     // B INIT FETCH POST
     fetch(url, options)
         .then((response) => response.json())
-        .then((result) => console.log(result))
+        .then((result) => {
+            if(result.result == true){
+                console.log("statusAnnuleren(): Success");
+            }
+            else { 
+                alert("statusAnnuleren(): Failed");
+                
+            }
+           
+            
+          }
+
+
+        )
   
 
     return false;
@@ -147,7 +161,19 @@ window.statusBereiden = function (bestelid) {
     // B INIT FETCH POST
     fetch(url, options)
         .then((response) => response.json())
-        .then((result) => console.log(result))
+        .then((result) => {
+            console.log(result);
+            if(result.result == true){
+                console.log("statusBereiden(): Success");
+            }
+            else { 
+                alert("statusBereiden(): Failed");
+            }
+           
+            
+          }
+          )
+
 
     return false;
 
@@ -169,7 +195,19 @@ window.statusReady = function (bestelid) {
     // B INIT FETCH POST
     fetch(url, options)
         .then((response) => response.json())
-        .then((result) => console.log(result))
+        .then((result) => {
+            if(result.result == true){
+                console.log("statusReady(): success!");
+            }
+            else { 
+                alert("statusReady(): Failed");
+            }
+           
+            
+          }
+
+
+        )
        
 
     return false;
