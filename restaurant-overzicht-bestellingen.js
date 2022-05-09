@@ -47,6 +47,7 @@ function template_bestelling(bestelling, bestellingInhoud) {
             <p>Tijdstip: ${bestelling.tijdstip}</p>
             <p>Status:${bestelling.status}</p>
             <p>Betaald: ${bestelling.betaald}</p>
+            <p>Bezorger: ${bestelling.bezorger}</p>
         </div>
         <div>
 
@@ -107,11 +108,7 @@ function template_gerecht(gerecht) {
 }
 
 
-
-
-
-
-// FUNCTIE: bezorgs ophalen en in dropdownmenu stoppen
+// FUNCTIE: bezorgers ophalen en in dropdownmenu stoppen
 window.alleBezorgers = function () {
     fetch("https://backendyc2204bezorging.azurewebsites.net/toonbezorgers")
         .then((response) => response.json())
@@ -131,6 +128,23 @@ window.alleBezorgers = function () {
 
 
         })
+}
+
+// FUNCTIE: geselecteerde bezorger met FETCH koppelen aan bestelling
+
+window.koppelBezorger = function (bestellingid) {
+ // A GET FORM DATA
+ 
+ let rawData = new FormData();
+ rawData.append("bezorger", document.getElementById("gerechtnaam").value);
+ rawData.append("prijs", document.getElementById("gerechtprijs").value);
+ rawData.append("afbeelding", document.getElementById("gerechturl").value);
+
+ // snippet om fordata te converteren in JSON
+ const data = {};
+ rawData.forEach((value, key) => (data[key] = value));
+ console.log(data);
+
 }
 
 // TEMPLATE: bezorgeritems
