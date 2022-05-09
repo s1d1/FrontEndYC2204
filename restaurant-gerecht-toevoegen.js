@@ -106,7 +106,7 @@ window.testPost = function () { // de functie testPost wordt hier gedefinieerd v
 
 };
 
-// SAMPLE post form data met javascript
+// post form data met javascript
 // referentie: https://code-boxx.com/post-form-data-javascript-fetch/#sec-post
 
 window.sendData = function () {
