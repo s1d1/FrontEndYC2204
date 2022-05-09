@@ -1,13 +1,44 @@
 
 
-// haalt restaurantid op uit url.
+// VARIABELE: haalt restaurantid op uit url.
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
 const restaurantid = parseInt(urlParams.get("id"), 10);
 
-// template voor lijstitems van bestelling
+// FETCH + ASSIGNMENT: hier wordt de restaurantnaam opgehaald uit DATABASE en aan bezNav gegeven.
+fetch("https://backendyc2204bezorging.azurewebsites.net/restaurantbyid/" + restaurantid)
+    //fetch("https://localhost:8080/restaurantbyid/" + restaurantid)
+    .then((response) => response.json())
+    .then((restaurant) => {
+        let restaurantnaam = restaurant.naam;
+        const bezNav = document.querySelector("bez-nav");
+        bezNav.title = restaurantnaam + " - Adminpagina - Bestellingoverzicht";
+    })
+
+// FUNCTIE: bestellingen ophalen + renderen als lijstitems
+fetch("https://backendyc2204bezorging.azurewebsites.net/geefbestellingenvanres/" + restaurantid)
+    //fetch("https://localhost:8080/toonmenu/" + restaurantid)
+    .then((response) => response.json())
+    .then((bestellingendata) => {
+        const listEL = document.getElementById("bestellingen");
+        let htmlString = "";
+
+        // binnen elke bestelling wordt er ook gelooped over de lijst van gerechten die de bestelling heeft.
+        bestellingendata.forEach((bestelling) => {
+            let bestellingInhoud = "";
+            bestelling.gerechten.forEach((gerecht) => {
+                bestellingInhoud += template_gerecht(gerecht);
+            })
+
+            htmlString += template_bestelling(bestelling, bestellingInhoud);
+        })
+        listEL.innerHTML = htmlString;
+        alleBezorgers();
+    })
+
+// TEMPLATE: bestellingitems, bevat ook knoppen voor status wijzigen en bezorger koppelen
 function template_bestelling(bestelling, bestellingInhoud) {
-  
+
     return `
     <div class="bestelling" id="${bestelling.id}">
         <div>
@@ -48,21 +79,20 @@ function template_bestelling(bestelling, bestellingInhoud) {
     <button button type="button" onclick="statusBereiden(${bestelling.id})">
     Bestelling accepteren/bereiden
     </button>
-
-    <select class="bezorger_dropdown">
+    <form id="form-bezorger-koppelen" onsubmit="return koppelBezorger(${bestelling.id})">
+    <label>Kies bezorger:</label>
+    <select class="bezorger_dropdown" id="bezorger">
     </select>
+    <input type="submit" value="Bestelling klaar / bezorger toewijzen">
+    </form>
 
-    <button button type="button" onclick="statusReady(${bestelling.id})">
-     Bestelling klaar/ Bezorger toewijzen
-    </button>
-
+    
     </div>`
-
 }
 
-// template voor gerechtenitems van bestelling
+// TEMPLATE: gerechtenitems 
 function template_gerecht(gerecht) {
-  
+
     return `<li>   
     <div>   
             <p>${gerecht.naam}</p>
@@ -77,39 +107,42 @@ function template_gerecht(gerecht) {
 }
 
 
-        // hier wordt de restaurantnaam opgehaald uit DATABASE en aan bezNav gegeven.
-        fetch("https://backendyc2204bezorging.azurewebsites.net/restaurantbyid/" + restaurantid)
-            //fetch("https://localhost:8080/restaurantbyid/" + restaurantid)
-            .then((response) => response.json())
-            .then((restaurant) => {
-                let restaurantnaam = restaurant.naam;
-                const bezNav = document.querySelector("bez-nav");
-                bezNav.title = restaurantnaam + " - Adminpagina - Bestellingoverzicht";
+
+
+
+
+// FUNCTIE: bezorgs ophalen en in dropdownmenu stoppen
+window.alleBezorgers = function () {
+    fetch("https://backendyc2204bezorging.azurewebsites.net/toonbezorgers")
+        .then((response) => response.json())
+        .then((bezorgers) => {
+            console.log(bezorgers)
+            const dropDowns = document.getElementsByClassName('bezorger_dropdown');
+            let htmlString = "";
+            bezorgers.forEach((bezorger) => {
+                console.log(bezorger);
+                htmlString += template_bezorger(bezorger);
             })
-            
-
-    //   hier worden de bestellingen van het restaurant opgehaald uit DATABASE en in lijstitems gestopt.
-        fetch("https://backendyc2204bezorging.azurewebsites.net/geefbestellingenvanres/" + restaurantid)
-            //fetch("https://localhost:8080/toonmenu/" + restaurantid)
-            .then((response) => response.json())
-            .then((bestellingendata) => {
-                const listEL = document.getElementById("bestellingen");
-                let htmlString = "";
-                
-            // binnen elke bestelling wordt er ook gelooped over de lijst van gerechten die de bestelling heeft.
-              bestellingendata.forEach((bestelling) => {
-                    let bestellingInhoud = "";
-                    bestelling.gerechten.forEach((gerecht) => {
-                        bestellingInhoud += template_gerecht(gerecht);                   
-                     })
-
-                    htmlString += template_bestelling(bestelling, bestellingInhoud);
-                })
-                listEL.innerHTML = htmlString;
-            })
+            for (let i = 0; i < dropDowns.length; i++) {
+                dropDowns[i].innerHTML = htmlString;
+            }
 
 
-// Functies om bestellingen op een bepaalde status te zetten.
+
+
+        })
+}
+
+// TEMPLATE: bezorgeritems
+function template_bezorger(bezorger) {
+    return `
+                    <option value=${bezorger.name}>${bezorger.name}</option>
+                    `
+}
+
+
+
+// FUNCTIES: voor het wijzigen van de status van de bestellingen.
 
 window.statusAnnuleren = function (bestelid) {
     console.log("Hallo, dit is statusAnnuleren()")
@@ -119,26 +152,26 @@ window.statusAnnuleren = function (bestelid) {
 
     const options = {
         method: 'POST',
-       
+
     };
     // B INIT FETCH POST
     fetch(url, options)
         .then((response) => response.json())
         .then((result) => {
-            if(result.result == true){
+            if (result.result == true) {
                 console.log("statusAnnuleren(): Success");
             }
-            else { 
+            else {
                 alert("statusAnnuleren(): Failed");
-                
+
             }
-           
-            
-          }
+
+
+        }
 
 
         )
-  
+
 
     return false;
 
@@ -163,16 +196,16 @@ window.statusBereiden = function (bestelid) {
         .then((response) => response.json())
         .then((result) => {
             console.log(result);
-            if(result.result == true){
+            if (result.result == true) {
                 console.log("statusBereiden(): Success");
             }
-            else { 
+            else {
                 alert("statusBereiden(): Failed");
             }
-           
-            
-          }
-          )
+
+
+        }
+        )
 
 
     return false;
@@ -196,47 +229,20 @@ window.statusReady = function (bestelid) {
     fetch(url, options)
         .then((response) => response.json())
         .then((result) => {
-            if(result.result == true){
+            if (result.result == true) {
                 console.log("statusReady(): success!");
             }
-            else { 
+            else {
                 alert("statusReady(): Failed");
             }
-           
-            
-          }
+
+
+        }
 
 
         )
-       
+
 
     return false;
 }
 
-
-    fetch("https://backendyc2204bezorging.azurewebsites.net/toonbezorgers")
-        .then((response) => response.json())
-        .then((bezorgers) => {
-            console.log(bezorgers)
-            const dropDowns = document.getElementsByClassName('bezorger_dropdown');
-            let htmlString = "";
-            bezorgers.forEach((bezorger) => {
-                console.log(bezorger);
-                htmlString += template_bezorger(bezorger);
-            })
-            for (let i = 0; i < dropDowns.length; i++) {
-                dropDowns[i].innerHTML = htmlString;
-            }
-
-           
-        
-           
-    })
-
-
-    // template voor het maken van lijstitems van de bezorgers
-    function template_bezorger(bezorger) {
-        return `
-        <option value=${bezorger.name}>${bezorger.name}</option>
-        `
-    }
