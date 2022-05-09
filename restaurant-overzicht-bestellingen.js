@@ -22,6 +22,8 @@ fetch("https://backendyc2204bezorging.azurewebsites.net/geefbestellingenvanres/"
     .then((bestellingendata) => {
         const listEL = document.getElementById("bestellingen");
         let htmlString = "";
+        let bzgr_view = "";
+        let stts_view = "";
 
         // binnen elke bestelling wordt er ook gelooped over de lijst van gerechten die de bestelling heeft.
         bestellingendata.forEach((bestelling) => {
@@ -30,14 +32,17 @@ fetch("https://backendyc2204bezorging.azurewebsites.net/geefbestellingenvanres/"
                 bestellingInhoud += template_gerecht(gerecht);
             })
 
-            htmlString += template_bestelling(bestelling, bestellingInhoud);
+            bzgr_view = setBezorger(bestelling);
+            stts_view = setStatus(bestelling);
+
+            htmlString += template_bestelling(bestelling, bestellingInhoud, stts_view, bzgr_view);
         })
         listEL.innerHTML = htmlString;
         alleBezorgers();
     })
 
 // TEMPLATE: bestellingitems, bevat ook knoppen voor status wijzigen en bezorger koppelen
-function template_bestelling(bestelling, bestellingInhoud) {
+function template_bestelling(bestelling, bestellingInhoud, stts_view, bzgr_view) {
 
     return `
     <div class="bestelling" id="${bestelling.id}">
@@ -45,9 +50,9 @@ function template_bestelling(bestelling, bestellingInhoud) {
             <h3>Bestelgegevens</h3>
             <p>#${bestelling.id}</p>
             <p>Tijdstip: ${bestelling.tijdstip}</p>
-            <p>Status:${bestelling.status}</p>
+            <p>Status:${stts_view}</p>
             <p>Betaald: ${bestelling.betaald}</p>
-            <p>Bezorger: ${bestelling.bezorger.name}</p>
+            <p>Bezorger: ${bzgr_view}</p>
         </div>
         <div>
 
@@ -130,11 +135,41 @@ window.alleBezorgers = function () {
         })
 }
 
+// FUNCTIE: check of bestelling een bezorger heeft
+function setBezorger(bestelling) {
+    if (bestelling.bezorger == null) {
+        return 'Geen bezorger'
+    }
+    else {
+        return bestelling.bezorger.name;
+    }
+}
+
+// FUNCTIE: vertaling van statusnummers in leesbare output
+function setStatus(bestelling) {
+    if (bestelling.status == 0) {
+        return 'Ontvangen'
+    }
+    else if (bestelling.status == 1) {
+        return 'Bereiden'
+    }
+    
+    else if (bestelling.status == 2) {
+        return 'Klaar voor bezorging'
+    }
+
+    else if (bestelling.status == 4) {
+        return 'Geannuleerd'
+    }
+}
+    
+
+
 // TEMPLATE: bezorgeritems
 function template_bezorger(bezorger) {
     return `
-                    <option value=${bezorger.id}>${bezorger.name}</option>
-                    `
+        <option value=${bezorger.id}>${bezorger.name}</option>
+        `
 }
 
 // FUNCTIE: geselecteerde bezorger met FETCH PUT koppelen aan bestelling
