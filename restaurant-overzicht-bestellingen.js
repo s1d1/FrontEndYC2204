@@ -47,7 +47,7 @@ function template_bestelling(bestelling, bestellingInhoud) {
             <p>Tijdstip: ${bestelling.tijdstip}</p>
             <p>Status:${bestelling.status}</p>
             <p>Betaald: ${bestelling.betaald}</p>
-            <p>Bezorger: ${bestelling.bezorger}</p>
+            <p>Bezorger: ${bestelling.bezorger.name}</p>
         </div>
         <div>
 
@@ -130,29 +130,38 @@ window.alleBezorgers = function () {
         })
 }
 
-// FUNCTIE: geselecteerde bezorger met FETCH koppelen aan bestelling
-
-window.koppelBezorger = function (bestellingid) {
- // A GET FORM DATA
- 
- let rawData = new FormData();
- rawData.append("bezorger", document.getElementById("gerechtnaam").value);
- rawData.append("prijs", document.getElementById("gerechtprijs").value);
- rawData.append("afbeelding", document.getElementById("gerechturl").value);
-
- // snippet om fordata te converteren in JSON
- const data = {};
- rawData.forEach((value, key) => (data[key] = value));
- console.log(data);
-
-}
-
 // TEMPLATE: bezorgeritems
 function template_bezorger(bezorger) {
     return `
-                    <option value=${bezorger.name}>${bezorger.name}</option>
+                    <option value=${bezorger.id}>${bezorger.name}</option>
                     `
 }
+
+// FUNCTIE: geselecteerde bezorger met FETCH PUT koppelen aan bestelling
+
+window.koppelBezorger = function (bestellingid) {
+ // A GET FORM DATA
+
+let bezorgerid = document.getElementById("bezorger").value;
+console.log(bezorgerid);
+
+const url = 'http://backendyc2204bezorging.azurewebsites.net/bezorgeraanbestelling/' +  bestellingid + '/' + bezorgerid;
+
+const options = {
+    method: 'PUT',
+    headers: {
+        'Content-Type': 'application/json'
+    },
+};
+// B INIT FETCH POST
+fetch(url, options)
+    .then((response) => console.log(response))
+   
+
+ return false;
+}
+
+
 
 
 
