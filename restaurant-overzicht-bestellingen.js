@@ -49,7 +49,7 @@ function template_bestelling(bestelling, bestellingInhoud) {
     Bestelling accepteren/bereiden
     </button>
 
-    <select id="bezorger_dropdown">
+    <select class="bezorger_dropdown">
     </select>
 
     <button button type="button" onclick="statusReady(${bestelling.id})">
@@ -213,24 +213,30 @@ window.statusReady = function (bestelid) {
     return false;
 }
 
-fetch("https://backendyc2204bezorging.azurewebsites.net/toonbezorgers")
-    .then((response) => response.json())
-    .then((bezorgers) => {
-        console.log(bezorgers)
-        const listEL = document.getElementById("bezorger_dropdown");
-        let htmlString = "";
-        bezorgers.forEach((bezorger) => {
-            console.log(bezorger);
-            htmlString += template_bezorger(bezorger);
-        })
-    listEL.innerHTML = htmlString;
-})
+
+    fetch("https://backendyc2204bezorging.azurewebsites.net/toonbezorgers")
+        .then((response) => response.json())
+        .then((bezorgers) => {
+            console.log(bezorgers)
+            const dropDowns = document.getElementsByClassName('bezorger_dropdown');
+            let htmlString = "";
+            bezorgers.forEach((bezorger) => {
+                console.log(bezorger);
+                htmlString += template_bezorger(bezorger);
+            })
+            for (let i = 0; i < dropDowns.length; i++) {
+                dropDowns[i].innerHTML = htmlString;
+            }
+
+           
+        
+           
+    })
 
 
-// template voor het maken van lijstitems van de bezorgers
-function template_bezorger(bezorger) {
-    return `
-    <option value=${bezorger.name}>${bezorger.name}</option>
-    `
-}
-
+    // template voor het maken van lijstitems van de bezorgers
+    function template_bezorger(bezorger) {
+        return `
+        <option value=${bezorger.name}>${bezorger.name}</option>
+        `
+    }
