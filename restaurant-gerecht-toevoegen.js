@@ -31,7 +31,7 @@ function template_gerecht(gerecht) {
 window.deleteGerecht = function (gerechtid) {
     console.log("Hallo dit is deleteGerecht()");
 
-    const url = 'http://backendyc2204bezorging.azurewebsites.net/??/' + gerechtid;
+    const url = 'http://backendyc2204bezorging.azurewebsites.net/gerechtverwijderen/' +  gerechtid;
 
     const options = {
         method: 'POST',
