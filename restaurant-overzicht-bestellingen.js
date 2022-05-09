@@ -97,11 +97,8 @@ function template_gerecht(gerecht) {
               bestellingendata.forEach((bestelling) => {
                     let bestellingInhoud = "";
                     bestelling.gerechten.forEach((gerecht) => {
-                    console.log("Er gebeurt iets.")
-                    bestellingInhoud += template_gerecht(gerecht);
-
-                    
-                  })
+                        bestellingInhoud += template_gerecht(gerecht);                   
+                     })
 
                     htmlString += template_bestelling(bestelling, bestellingInhoud);
                 })
@@ -212,3 +209,25 @@ window.statusReady = function (bestelid) {
 
     return false;
 }
+
+fetch("https://backendyc2204bezorging.azurewebsites.net/toonbezorgers")
+    .then((response) => response.json())
+    .then((bezorgers) => {
+        console.log(bezorgers)
+        const listEL = document.getElementById("bezorger_dropdown");
+        let htmlString = "";
+        bezorgers.forEach((bezorger) => {
+            console.log(bezorger);
+            htmlString += template_bezorger(bezorger);
+        })
+    listEL.innerHTML = htmlString;
+})
+
+
+// template voor het maken van lijstitems van de bezorgers
+function template_bezorger(bezorger) {
+    return `
+    <option value=${bezorger.name}>${bezorger.name}</option>
+    `
+}
+
