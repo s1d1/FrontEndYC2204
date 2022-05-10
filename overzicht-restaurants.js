@@ -16,10 +16,10 @@ function template(data) {
     <li class = "border">
       <a class="restitel" href="/menukaart.html?id=${data.id}">
         <div>
-          <p class = naam>${data.naam}</p>
-          <p>${data.openingstijden}</p>
-          <p>${data.telefoonnummer}</p>
-          <p>${data.adres}</p>
+          <p class="restaurantnaam">${data.naam}</p>
+          <p>Openingstijden: ${data.openingstijden}</p>
+          <p>Telefoonnummer: ${data.telefoonnummer}</p>
+          <p>Adres: ${data.adres}</p>
         </div>
         <div>
         <img class="plaatje" src="${data.gerechten[0].afbeelding}" />

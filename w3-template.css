@@ -2162,3 +2162,54 @@ a {
       padding-left: 50px;
       padding-right: 50px;
   }
+
+  /* CSS voor overzicht-restaurants.html */
+  
+  .body {
+
+  }
+  
+  #inhoud {
+    padding-top: 40px;
+  }
+  
+  .restitel {
+    height: fit-content;
+    width: 800px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    text-decoration: none;
+    color: rgb(44, 11, 11);
+    border: 20px;
+    border-color: rgb(48, 4, 4);
+  
+  }
+  
+  .plaatje {
+    width: 300px;
+    max-height: fit-content;
+    object-fit: cover;
+  }
+  
+  #list{
+    list-style: none;
+  }
+  
+  .body-div {
+    margin: auto;
+    width: fit-content;
+    max-height: fit-content;
+    
+  }
+    
+  .border {
+    border: 1px solid rgb(48, 4, 4);
+    margin-bottom: 5px;
+  }
+  
+.restaurantnaam {
+    font-weight: bold;
+    font-size: 24px;
+}
