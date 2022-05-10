@@ -35,13 +35,13 @@
           achtergrond.classList.add("w3-blue-grey");
           achtergrond.classList.add("winkeldiv");
           titel.innerHTML =
-            "Winkelmandje<span class='material-symbols-outlined'>arrow_drop_up</span>";
+            "<span class='material-symbols-outlined winkelmandje_icon'>shopping_cart</span>Winkelmandje<span class='material-symbols-outlined'>arrow_drop_up</span>";
         } else {
           winkelmandje.style.display = "none";
           achtergrond.classList.remove("w3-blue-grey");
           achtergrond.classList.remove("winkeldiv");
           titel.innerHTML =
-            "Winkelmandje<span class='material-symbols-outlined'>arrow_drop_down</span>";
+            "<span class='material-symbols-outlined winkelmandje_icon'>shopping_cart</span>Winkelmandje<span class='material-symbols-outlined'>arrow_drop_down</span>";
         }
       }
 
@@ -54,7 +54,7 @@
           achtergrond.classList.add("w3-blue-grey");
           achtergrond.classList.add("winkeldiv");
           titel.innerHTML =
-            "Winkelmandje<span class='material-symbols-outlined'>arrow_drop_up</span>";
+            "<span class='material-symbols-outlined winkelmandje_icon'>shopping_cart</span>Winkelmandje<span class='material-symbols-outlined'>arrow_drop_up</span>";
         }
       }
     </script>
@@ -112,7 +112,9 @@
             class="aside__title w3-blue-grey"
             onclick="show_winkelmandje()"
           >
-            Winkelmandje<span class="material-symbols-outlined">
+            <span class="material-symbols-outlined winkelmandje_icon">
+              shopping_cart </span
+            >Winkelmandje<span class="material-symbols-outlined">
               arrow_drop_down
             </span>
           </p>
