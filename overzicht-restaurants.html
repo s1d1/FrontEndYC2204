@@ -58,16 +58,24 @@
     <!-- Navigatie -->
     <w3-navbar></w3-navbar>
     <!-- Header met image -->
-    <header class="bannerimg w3-display-container w3-grayscale-min" id="home">
-      <div id="header"></div>
+    <header class="bannerimg w3-display-container w3-grayscale-min" id="home">      
+        <h1 class="overzicht-titel">
+        Restaurants
+        </h1>
     </header>
-    <div>
-      <h1 style="color: white">Overzicht restaurants</h1>
-    </div>
-    <div class="body-div">
-      <div>
-        <ul id="list"></ul>
+
+    <div class="w3-container w3-xxlarge" id="restaurants">
+      <div class="w3-content">
+        <div id="restaurantlijst" class="w3-container w3-padding-32 w3-white">
+          <div class="flex-row" id="restaurantlijstitem">
+            <div>
+              <ul id="list"></ul>
+            </div>
+            <!-- Js voegt hier restaurants in uit database-->
+          </div>
+        </div>
       </div>
+    </div>
     </div>
     <!-- Infoblok -->
     <bez-infoblok></bez-infoblok>
