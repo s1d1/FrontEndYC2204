@@ -85,7 +85,7 @@ function template_bestelling(bestelling, bestellingInhoud, stts_view, bzgr_view)
     <button button type="button" onclick="statusBereiden(${bestelling.id})">
     Bestelling accepteren/bereiden
     </button>
-    <form id="form-bezorger-koppelen" onsubmit="return koppelBezorger(${bestelling.id})">
+    <form id="form-bezorger-koppelen" onsubmit="return statusReady(${bestelling.id})">
     <label>Kies bezorger:</label>
     <select class="bezorger_dropdown" id="bezorger">
     </select>
@@ -135,7 +135,7 @@ window.alleBezorgers = function () {
         })
 }
 
-// FUNCTIE: check of bestelling een bezorger heeft
+// FUNCTIE: vaststellen van bezorger met if-statement in geval van geen bezorger.
 function setBezorger(bestelling) {
     if (bestelling.bezorger == null) {
         return 'Geen bezorger'
@@ -172,29 +172,6 @@ function template_bezorger(bezorger) {
         `
 }
 
-// FUNCTIE: geselecteerde bezorger met FETCH PUT koppelen aan bestelling
-
-window.koppelBezorger = function (bestellingid) {
- // A GET FORM DATA
-
-let bezorgerid = document.getElementById("bezorger").value;
-console.log(bezorgerid);
-
-const url = 'http://backendyc2204bezorging.azurewebsites.net/bezorgeraanbestelling/' +  bestellingid + '/' + bezorgerid;
-
-const options = {
-    method: 'PUT',
-    headers: {
-        'Content-Type': 'application/json'
-    },
-};
-// B INIT FETCH POST
-fetch(url, options)
-    .then((response) => console.log(response))
-   
-
- return false;
-}
 
 
 
@@ -289,6 +266,7 @@ window.statusReady = function (bestelid) {
         .then((result) => {
             if (result.result == true) {
                 console.log("statusReady(): success!");
+                koppelBezorger(bestelid); // Nested zodat je niet een bezorger kan toewijzen zonder dat de bestelling ook op Ready wordt gezet
             }
             else {
                 alert("statusReady(): Failed");
@@ -304,3 +282,27 @@ window.statusReady = function (bestelid) {
     return false;
 }
 
+// FUNCTIE: geselecteerde bezorger met FETCH PUT koppelen aan bestelling
+
+window.koppelBezorger = function (bestelid) {
+    // A GET FORM DATA
+   
+   let bezorgerid = document.getElementById("bezorger").value;
+   console.log(bezorgerid);
+   
+   const url = 'http://backendyc2204bezorging.azurewebsites.net/bezorgeraanbestelling/' +  bestelid + '/' + bezorgerid;
+   
+   const options = {
+       method: 'PUT',
+       headers: {
+           'Content-Type': 'application/json'
+       },
+   };
+   // B INIT FETCH POST
+   fetch(url, options)
+       .then((response) => console.log(response))
+      
+   
+    return false;
+   }
+   
