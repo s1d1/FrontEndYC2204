@@ -2073,6 +2073,11 @@ a {
     padding-bottom: 5px;
 }
 
+.material-symbols-outlined {
+    vertical-align: middle;
+    padding-bottom: 4px;
+}
+
 /* Menukaart */
 
 .menukaart-main {
@@ -2161,4 +2166,19 @@ a {
   .restaurantinfo-padding {
       padding-left: 50px;
       padding-right: 50px;
+  }
+
+  .winkelmandje_icon {
+    padding-right: 10px;
+  }
+
+  /* CSS overzicht-restaurants.html */
+
+  .overzicht-titel {
+    text-align: center;
+    font-weight: bold; 
+    font-size: 64px;
+    color:white;
+    margin:0; 
+    padding-top: 80px;
   }
