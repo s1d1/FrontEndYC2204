@@ -26,9 +26,9 @@ function template(data)
     <div class = "restitel">
         <div>
             <p class = naam>${data.restaurant.naam}</p>
-            <p>${bestelbetaald}</p>
-            <p>Status: ${bestelstatus}</p>
-            <p>Besteeling is geplaatst op: ${data.tijdstip}</p>
+            <p><b>${bestelbetaald}</b></p>
+            <p><b>Status:</b> ${bestelstatus}</p>
+            <p><b>Bestelling is geplaatst op:</b> ${data.tijdstip}</p>
         </div>
         <div>
             <img class="plaatje" src="${data.restaurant.logo}" />
