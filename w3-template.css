@@ -2172,6 +2172,25 @@ a {
     padding-right: 10px;
   }
 
+
+    :root {
+    --background: black;
+    }
+
+  .bannerimg {
+    background-image: var(--background);
+    min-height: 100%;
+
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  .font-shadow {
+      text-shadow: 2px 2px #000;
+  }
+
   /* CSS overzicht-restaurants.html */
 
   .overzicht-titel {
