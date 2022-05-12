@@ -1,9 +1,13 @@
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
 const bezorgid = parseInt(urlParams.get("id"), 10);
+let bestellingid;
 
 
-fetch("http://localhost:8080/geefbestellingvanbezorger/"+bezorgid)
+
+
+
+fetch("https://backendyc2204bezorging.azurewebsites.net/geefdtobestellingvanbezorger/"+bezorgid)
 .then((response) => response.json())
   .then((bestellingen) => {
     const listEl = document.getElementById("list");
@@ -11,20 +15,48 @@ fetch("http://localhost:8080/geefbestellingvanbezorger/"+bezorgid)
     bestellingen.forEach((bestelling) => {
       htmlString += template(bestelling);
 
+      
+
     });
-    listEl.innerHTML = htmlString;
+
+    // listEl.innerHTML = htmlString;
+    listEl.innerHTML = '<button button type="button" onclick="go()">Bestelling afgeleverd!!</button>';
   });
 
-  function template(data)
+function go()
 {
-    return`
-    <li>
-        <div class = "restitel">
-            <p><b>Naam:</b> ${data.klant.voornaam} ${data.klant.achternaam}</p>
-            <p><b>Adres:</b> ${data.klant.adress}, ${data.klant.postcode}</p>
-        </div>
-        <div>
-            <button>Afgeleverd!</button>
-        </div>
-     `;
+  alert("test");
+}
+
+function template(data)
+{
+  console.log("Template");
+  return '<button button type="button" onclick="go()">Bestelling afgeleverd!!</button>';
+    // return`
+    // <li>
+    //     <div class = "restitel">
+    //         <p><b>Naam:</b> ${data.klant.voornaam} ${data.klant.achternaam}</p>
+    //         <p><b>Adres:</b> ${data.klant.adress}, ${data.klant.postcode}</p>
+    //     </div>
+    //     <div>
+    //     <button button type="button" onclick="go()">Bestelling afgeleverd!!</button>
+    //     </div>
+    //  `;
+}
+
+function klikken(bestelid)
+{
+  fetch('https://backendyc2204bezorging.azurewebsites.net/setstatus/' + bestelid + '/3', { method: "POST", })
+    .then((response) => response.json())
+    .then((result) => {
+      if (result.result == true) {
+        alert("Bestelling is succesvol afgeleverd!");
+        }
+      else {
+        alert("Bestelling is nog niet/of was al afgeleverd");
+
+        }
+    }
+    )
+
 }
