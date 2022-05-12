@@ -45,6 +45,7 @@ fetch("https://backendyc2204bezorging.azurewebsites.net/geefbestellingenvanres/"
 
 // TEMPLATE: bestellingitems, bevat ook knoppen voor status wijzigen en bezorger koppelen
 function template_bestelling(bestelling, bestellingInhoud, stts_view, bzgr_view) {
+   
 
     return `
     <div class="bestelling" id="${bestelling.id}">
@@ -87,7 +88,7 @@ function template_bestelling(bestelling, bestellingInhoud, stts_view, bzgr_view)
     <button button type="button" onclick="statusBereiden(${bestelling.id}, ${bestelling.status})">
     Bestelling accepteren/bereiden
     </button>
-    <form id="form-bezorger-koppelen" onsubmit="return statusReady(${bestelling.id}, ${bestelling.status}, bezorger_${bestelling.id})">
+    <form id="form-bezorger-koppelen" onsubmit="return statusReady(${bestelling.id}, ${bestelling.status})">
     <label>Kies bezorger:</label>
     <select class="bezorger_dropdown" id="bezorger_${bestelling.id}">
     </select>
@@ -218,23 +219,23 @@ window.statusAnnuleren = function (bestelid, bestelstatus) {
     fetch(url, options)
         .then((response) => response.json())
         .then((result) => {
-            if (result.result == true) {
+            if (result.result == true) { // bij bestelstatus == 0
                 console.log("statusAnnuleren(): Success");
                 alert(`Je hebt bestelling #${bestelid} geannuleerd.`)
             }
             else {
                 if (bestelstatus == 4) {
-                    alert("De bestelling is al geannuleerd.");
+                    alert(`Je kan bestelling #${bestelid} niet meer annuleren, want hij is al geannuleerd.`);
                 }
-                else if (bestelstatus == 1) {
-                    alert("Je kan een al geaccepteerde bestelling niet meer annuleren.");
+                else if (bestelstatus > 1) {
+                    alert(`Je kan bestelling #${bestelid} niet meer annuleren, want hij is al geaccepteerd.`);
                 }
 
-                else if (bestelstatus == 2) {
-                    alert("Je kan een bestelling die al klaargemaakt is niet meer annuleren.");
-                }
+                // else if (bestelstatus == 2) {
+                //     alert(`Je kan bestelling #${bestelid} niet meer annuleren, want hij is reeds klaargemaakt.`);
+                // }
                 else {
-                    alert("De bestelling kan niet geannuleerd worden. (Onbekende reden).");
+                    alert(`Je kan bestelling #${bestelid} niet meer annuleren. (Onbekende reden.)`);
                    
                 }
 
@@ -267,23 +268,24 @@ window.statusBereiden = function (bestelid, bestelstatus) {
         .then((response) => response.json())
         .then((result) => {
             console.log(result);
-            if (result.result == true) {
+            if (result.result == true) { // bij bestelstatus == 0
                 console.log("statusBereiden(): Success");
-                alert(`Je hebt bestelling #${bestelid} geannuleerd.`)
+                alert(`Je hebt bestelling #${bestelid} geaccepteerd en gaat hem bereiden.`)
             }
             else {
                 if (bestelstatus == 4) {
-                    alert("De bestelling is al geannuleerd.");
+                    alert(`Je kan bestelling #${bestelid} niet accepteren, want hij is geannuleerd.`);
                 }
-                else if (bestelstatus == 1) {
-                    alert("Je kan een al geaccepteerde bestelling niet meer annuleren.");
+                else if (bestelstatus > 1) {
+                    alert(`Je kan bestelling #${bestelid} niet accepteren, want hij is al geaccepteerd.`);
                 }
 
-                else if (bestelstatus == 2) {
-                    alert("Je kan een bestelling die al klaargemaakt is niet meer annuleren.");
-                }
+                // else if (bestelstatus == 2) {
+                //     alert(`Je kan bestelling #${bestelid} niet accepteren, want hij is al bereid.`);
+                // }
+
                 else {
-                    alert("De bestelling kan niet geannuleerd worden. (Onbekende reden).");
+                    alert(`Je kan bestelling #${bestelid} niet accepteren. (Onbekende reden.)`);
                    
                 }
 
@@ -295,8 +297,9 @@ window.statusBereiden = function (bestelid, bestelstatus) {
 
 }
 
-window.statusReady = function (bestelid, bestelstatus, formid) {
+window.statusReady = function (bestelid, bestelstatus) {
     console.log("Hallo, dit is statusReady()")
+  
 
     let pathvariable = bestelid;
 
@@ -312,14 +315,23 @@ window.statusReady = function (bestelid, bestelstatus, formid) {
     fetch(url, options)
         .then((response) => response.json())
         .then((result) => {
-            if (result.result == true) {
+            if (result.result == true) { // bij bestelstatus == 0 of bestelstatus == 1
                 console.log("statusReady(): success!");
-                koppelBezorger(bestelid, formid); // Nested zodat je niet een bezorger kan toewijzen zonder dat de bestelling ook op Ready wordt gezet
+                koppelBezorger(bestelid); // Nested zodat je niet een bezorger kan toewijzen zonder dat de bestelling ook op Ready wordt gezet
             }
             else {
-                console.log(bestelStatus(bestelid))
+                if (bestelstatus == 4) {
+                    alert(`Je kan bestelling #${bestelid} niet op ‘Klaar voor bezorgen" zetten, want hij is geannuleerd.`);
+                }
+              
+                else if (bestelstatus == 2) {
 
-                alert("Het is niet gelukt om de bestelling op ‘ready’ te zetten. Wellicht is hij al geannuleerd.");
+                    koppelBezorger(bestelid);
+                }
+                else {
+                    alert("De bestelling kan niet op “Klaar voor bezorgen” gezet worden. (Onbekende reden).");
+                   
+                }
 
             }
 
@@ -335,10 +347,10 @@ window.statusReady = function (bestelid, bestelstatus, formid) {
 
 // FUNCTIE: geselecteerde bezorger met FETCH PUT koppelen aan bestelling
 
-window.koppelBezorger = function (bestelid, formid) {
+window.koppelBezorger = function (bestelid) {
     // A GET FORM DATA
    
-   let bezorgerid = document.getElementById(formid).value;
+   let bezorgerid = document.getElementById("bezorger_" + bestelid).value;
    console.log(bezorgerid);
    
    const url = 'http://backendyc2204bezorging.azurewebsites.net/bezorgeraanbestelling/' +  bestelid + '/' + bezorgerid;
@@ -352,6 +364,8 @@ window.koppelBezorger = function (bestelid, formid) {
    // B INIT FETCH POST
    fetch(url, options)
        .then((response) => console.log(response))
+    
+       alert(`Je hebt bezorger #${bezorgerid} toegewezen aan bestelling #${bestelid}`)
       
    
     return false;
