@@ -46,7 +46,7 @@ class w3NavBar extends HTMLElement {
               <a href="#infoblok" class="w3-bar-item w3-button">Over ons</a>
        
 
-              <a href="#" class="w3-bar-item w3-button">Inloggen</a>
+              <a href="restaurant-admin.html" class="w3-bar-item w3-button">Accountbeheer</a>
 
               
   

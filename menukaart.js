@@ -5,7 +5,7 @@ import { renderWinkelmandje, setWinkelmandjeData } from './winkelmandje.js';
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
 const restaurantid = parseInt(urlParams.get("id"), 10);
-
+export let restaurantbanner;
 
 fetch("https://backendyc2204bezorging.azurewebsites.net/restaurantbyid/" + restaurantid)
 .then((Response) => Response.json())
@@ -13,26 +13,30 @@ fetch("https://backendyc2204bezorging.azurewebsites.net/restaurantbyid/" + resta
     const restaurant = data;
     var restaurantnaam = restaurant.naam;
     var openingstijden = restaurant.openingstijden;
+    restaurantbanner = restaurant.banner;
+    console.log(restaurantbanner)
 
     const headerEL = document.getElementById("header");
-    headerEL.innerHTML = template_header(restaurantnaam, openingstijden);
+    headerEL.innerHTML = template_header(restaurantnaam, openingstijden, restaurantbanner);
 
     const restaurant_infoblok = document.getElementById("restaurantinfo");
     restaurant_infoblok.innerHTML = template_restaurant_info(restaurant);
 
 });
 
-function template_header(restaurantnaam, openingstijden) {
+function template_header(restaurantnaam, openingstijden, restaurantbanner) {
     return `
-    <div class="w3-display-bottomleft w3-padding">
-        <span class="w3-tag w3-xlarge">Bezorgingstijden: ${openingstijden}</span>
+    <header class="bannerimg w3-display-container" id="home" style="--background: url('${restaurantbanner}');">
+        <div class="w3-display-bottomleft w3-padding">
+            <span class="w3-tag w3-xlarge">Bezorgingstijden: ${openingstijden}</span>
+            </div>
+            <div class="w3-display-middle w3-center" style="padding-top: 20px;">
+            <span class="w3-text-white w3-hide-small font-shadow" style="font-size:100px"><b>${restaurantnaam}</b></span>
+            <span class="w3-text-white w3-hide-large w3-hide-medium" style="font-size:60px"><b>${restaurantnaam}</b></span>
+            <p><a href="#menu" class="w3-button w3-xlarge w3-black">Menu</a></p>
+            <p><a href="#restaurantinfo" class="w3-button w3-large w3-black">Informatie</a></p>
         </div>
-        <div class="w3-display-middle w3-center" style="padding-top: 20px;">
-        <span class="w3-text-white w3-hide-small" style="font-size:100px"><b>${restaurantnaam}</b></span>
-        <span class="w3-text-white w3-hide-large w3-hide-medium" style="font-size:60px"><b>${restaurantnaam}</b></span>
-        <p><a href="#menu" class="w3-button w3-xlarge w3-black">Menu</a></p>
-        <p><a href="#restaurantinfo" class="w3-button w3-large w3-black">Informatie</a></p>
-    </div>
+    </header>
   `
 }
 
