@@ -39,16 +39,25 @@ const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
 const restaurantid = parseInt(urlParams.get("id"), 10);
 
-fetch("https://backendyc2204bezorging.azurewebsites.net/restaurantbyid/" + restaurantid)
-.then((Response) => Response.json())
-.then((data) => {
-    const restaurant = data;
-    const gekozenEl = document.getElementById("gekozen");
-    gekozenEl.innerHTML = template_gekozen(restaurant);
-});
+console.log(restaurantid)
 
-function template_gekozen(restaurant) {
-    return `
-    <p>U heeft ${restaurant.naam} gekozen.</p>
-    `
+if (isNaN(restaurantid)) {
+    const gekozenEl = document.getElementById("gekozen");
+    gekozenEl.innerHTML = "<p>Kies een restaurant.</p>";
+} 
+else {
+    fetch("https://backendyc2204bezorging.azurewebsites.net/restaurantbyid/" + restaurantid)
+    .then((Response) => Response.json())
+    .then((data) => {
+        const restaurant = data;
+        const gekozenEl = document.getElementById("gekozen");
+        gekozenEl.innerHTML = template_gekozen(restaurant);
+    });
+    
+    function template_gekozen(restaurant) {
+        return `
+        <p>U heeft ${restaurant.naam} gekozen.</p>
+        `
+    } 
 }
+
