@@ -1,11 +1,11 @@
 
 
-// haalt restaurantid op uit url.
+// VARIABELEN: haalt restaurantid op uit url.
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
 const restaurantid = parseInt(urlParams.get("id"), 10);
 
-// template voor lijstitems van gerechten
+// TEMPLATE: gerechtenitems
 function template_gerecht(gerecht) {
     return `
     <li class="flex-item">
@@ -18,7 +18,7 @@ function template_gerecht(gerecht) {
         <div>
             <img src=${gerecht.afbeelding}>
         </div> 
-        <button>
+        <button onclick="deleteGerecht(${gerecht.id})">
             Verwijderen
         </button> 
 
@@ -26,57 +26,53 @@ function template_gerecht(gerecht) {
 
 }
 
-// fetch functie met lokale DUMMY data.
-// fetch("./data/restaurants.json")
-  
-//     .then((response) => response.json())
-//     .then((restaurantdata) => {
-//         const restaurant = restaurantdata.find(restaurant => restaurant.id === restaurantid);
+//FUNCTIE: gerecht verwijderen
 
-//         var restaurantnaam = restaurant.naam;
-//         const bezNav = document.querySelector("bez-nav");
-//         console.log(restaurantnaam, bezNav);
-//         bezNav.title = restaurantnaam + " - Adminpagina - Gerechten toevoegen (dummylijst, formulier wel naar database)";
+window.deleteGerecht = function (gerechtid) {
+    console.log("Hallo dit is deleteGerecht()");
+
+   // const url = 'http://localhost:8080/gerechtverwijderen/' +  gerechtid;
+    const url = 'http://backendyc2204bezorging.azurewebsites.net/gerechtverwijderen/' +  gerechtid;
+
+    const options = {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+    };
+
+    fetch(url, options)
+        .then(response => console.log(response))
+
+}
+
+// FUNCTIE: restaurantnaam ophalen en aan beznav geven
+fetch("https://backendyc2204bezorging.azurewebsites.net/restaurantbyid/" + restaurantid)
+    //fetch("https://localhost:8080/restaurantbyid/" + restaurantid)
+    .then((response) => response.json())
+    .then((restaurant) => {
+        let restaurantnaam = restaurant.naam;
+        const bezNav = document.querySelector("bez-nav");
+        bezNav.title = restaurantnaam + " - Adminpagina - Gerechten toevoegen";
+    })
 
 
-//         const listEL = document.getElementById("gerechten");
-//         let htmlString = "";
-//         restaurant.gerechten.forEach((gerecht) => {
-//             htmlString += template_gerecht(gerecht);
-//             console.log(gerecht);
-//         })
-
-//         listEL.innerHTML = htmlString;
-//     })
-
-
-        // hier wordt de restaurantnaam opgehaald uit DATABASE en aan bezNav gegeven.
-        fetch("https://backendyc2204bezorging.azurewebsites.net/restaurantbyid/" + restaurantid)
-            //fetch("https://localhost:8080/restaurantbyid/" + restaurantid)
-            .then((response) => response.json())
-            .then((restaurant) => {
-                let restaurantnaam = restaurant.naam;
-                const bezNav = document.querySelector("bez-nav");
-                bezNav.title = restaurantnaam + " - Adminpagina - Gerechten toevoegen";
-            })
-            
-
-    //  //   hier worden de restaurantgerechten opgehaald uit DATABASE en in lijstitems gestopt.
-        fetch("https://backendyc2204bezorging.azurewebsites.net/toonmenu/" + restaurantid)
-            //fetch("https://localhost:8080/toonmenu/" + restaurantid)
-            .then((response) => response.json())
-            .then((gerechtendata) => {
-                const listEL = document.getElementById("gerechten");
-                let htmlString = "";
-                gerechtendata.forEach((gerecht) => {
-                    htmlString += template_gerecht(gerecht);
-                })
-                listEL.innerHTML = htmlString;
-                   })
+// FUNCTIE: gerechten van restaurant ophalen en in menulijst stoppen
+fetch("https://backendyc2204bezorging.azurewebsites.net/toonmenu/" + restaurantid)
+    //fetch("https://localhost:8080/toonmenu/" + restaurantid)
+    .then((response) => response.json())
+    .then((gerechtendata) => {
+        const listEL = document.getElementById("gerechten");
+        let htmlString = "";
+        gerechtendata.forEach((gerecht) => {
+            htmlString += template_gerecht(gerecht);
+        })
+        listEL.innerHTML = htmlString;
+    })
 
 
 
-// WIP: POST request met fetch
+// FUNCTIE: testpost met fetch
 // referentie: https://stackoverflow.com/questions/39565706/post-request-with-fetch-api#39565776
 
 window.testPost = function () { // de functie testPost wordt hier gedefinieerd via window-object om het globaal te maken. 
@@ -106,13 +102,13 @@ window.testPost = function () { // de functie testPost wordt hier gedefinieerd v
 
 };
 
-// SAMPLE post form data met javascript
+// FUNCTIE: formulierdata posten met fetch
 // referentie: https://code-boxx.com/post-form-data-javascript-fetch/#sec-post
 
 window.sendData = function () {
-   //e.preventDefault();
+    //e.preventDefault();
 
-  
+
 
 
     // A GET FORM DATA
@@ -126,9 +122,9 @@ window.sendData = function () {
     rawData.forEach((value, key) => (data[key] = value));
     console.log(data);
 
-    
-    
-    
+
+
+
     const url = 'http://backendyc2204bezorging.azurewebsites.net/gerechttoevoegen/' + restaurantid;
 
     const options = {
@@ -141,7 +137,8 @@ window.sendData = function () {
     // B INIT FETCH POST
     fetch(url, options)
         .then((response) => console.log(response))
-       
+
 
     return false;
 }
+
