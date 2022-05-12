@@ -1,57 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <script src="./restaurant-gerecht-toevoegen.js" type="module"></script>
-  <link rel="stylesheet" href="restaurant-admin.css" />
-  <title>REST: gerecht toevoegen of verwijderen</title>
-  <script src="./components/bez-nav.js" type="module"></script>
-</head>
-
-<body>
-  <div class="header">
-    <bez-nav></bez-nav>
-  </div>
-  <main>
-    <h2>Gerechten</h2>
-    <ul class="list" id="gerechten">
-   
-    </ul>
-    <h2>Nieuw gerecht toevoegen:</h2>
-    <form id="form-gerecht-toevoegen" onsubmit="return sendData()">
-      <div class="fields">
-        <div class="formitem">
-          <label for="gerechtnaam">
-            Naam gerecht:
-            <input type="text" id="gerechtnaam" value="Testzalm">
-          </label>
-        </div>
-        <div class="formitem">
-          <label for="gerechtprijs">
-            Prijs:
-            <input type="text" id="gerechtprijs" value="99">
-          </label>
-        </div>
-        <div class="formitem">
-          <label for="gerechturl">
-            UMG-url:
-            <input type="text" id="gerechturl" value="https://theyellowdotcollective.com/wp-content/uploads/2020/11/food-20.jpg">
-          </label>
-        </div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="w3-template.css" />
+    <script src="./components/w3-navbar.js" type="module"></script>
+    <script src="./components/footer.js" type="module"></script>
+    <script src="./restaurant-gerecht-toevoegen.js" type="module"></script>
+    <title>Menu aanpassen</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.sandbox.google.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0"
+    />
+  </head>
+  <style>
+    body,
+    html {
+      height: 100%;
+      font-family: "Atkinson Hyperlegible", sans-serif;
+    }
+  </style>
+  <body>
+    <w3-navbar></w3-navbar>
+    <main class="main_aanpassen">
+      <div class="admin-titel">
+        <h2
+          class="w3-center w3-jumbo w3-text-white font-shadow"
+          style="font-weight: bold"
+        >
+          Menu aanpassen
+        </h2>
       </div>
-
-      <div class="submit">
-        <input type="submit" value="Toevoegen">
+      <div class="flex-column">
+        <h2 class="titel_lijst bold">Gerechten op menu:</h2>
+        <ul class="w3-ul w3-large" id="gerechten"></ul>
       </div>
-      <div id="testknop">   <button type="button" onclick="testPost()">**testgerecht met vaste waarden verzenden**</button></div>
-    </form>
+      <h2 class="titel_lijst bold">Nieuw gerecht toevoegen:</h2>
+      <div class="gerecht_toevoegen">
+        <form
+          class="form_aanpassen"
+          id="form-gerecht-toevoegen"
+          onsubmit="return sendData()"
+        >
+          <div class="fields">
+            <div class="formitem">
+              <label for="gerechtnaam" class="item">
+                <div class="labelnaam">Naam gerecht:</div>
+                <input type="text" id="gerechtnaam" class="inputfield" />
+              </label>
+            </div>
+            <div class="formitem">
+              <label for="gerechtprijs" class="item">
+                <div class="labelnaam">Prijs:</div>
+                <input type="text" id="gerechtprijs" class="inputfield" />
+              </label>
+            </div>
+            <div class="formitem">
+              <label for="gerechturl" class="item">
+                <div class="labelnaam">UMG-url:</div>
+                <input class="inputfield" type="text" id="gerechturl" />
+              </label>
+            </div>
+          </div>
 
-
-
-  </main>
-</body>
-
+          <div class="submit">
+            <input
+              type="submit"
+              value="Toevoegen"
+              class="w3-button toevoegen"
+            />
+          </div>
+        </form>
+      </div>
+    </main>
+    <bez-footer></bez-footer>
+  </body>
 </html>
