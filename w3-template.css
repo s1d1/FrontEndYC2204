@@ -2230,3 +2230,11 @@ a {
     display: flex;
     justify-content: center;
   }
+
+  .label {
+    padding-right: 10px;
+  }
+
+  .submit {
+    margin-left: 10px;
+  }

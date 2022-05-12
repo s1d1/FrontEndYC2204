@@ -21,10 +21,10 @@ fetch("https://backendyc2204bezorging.azurewebsites.net/toonrestaurants")
 function template_dropdown() {
     return `
     <form action="/restaurant-admin.html" method="get" class="dropdown">
-        <label for="restaurants">Kies een restaurant:</label>
-        <select name="id" id="restaurants">
+        <label for="restaurants" class="label w3-large">Kies een restaurant:</label>
+        <select name="id" id="restaurants" class="select w3-large">
         </select>
-        <input type="submit" value="Selecteer dit restaurant">
+        <input type="submit" value="Selecteer dit restaurant" class="submit w3-button w3-large" style="padding: 0px 5px 0px 5px;">
     </form>
   `
 }
@@ -38,8 +38,6 @@ function template_dropdownLink(restaurant) {
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
 const restaurantid = parseInt(urlParams.get("id"), 10);
-
-console.log(restaurantid)
 
 if (isNaN(restaurantid)) {
     const gekozenEl = document.getElementById("gekozen");
@@ -56,7 +54,7 @@ else {
     
     function template_gekozen(restaurant) {
         return `
-        <p>U heeft ${restaurant.naam} gekozen.</p>
+        <p class="w3-large">U heeft <span class="w3-text-teal">${restaurant.naam}</span> gekozen.</p>
         `
     } 
 }
