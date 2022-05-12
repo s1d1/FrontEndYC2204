@@ -67,12 +67,12 @@ class Infoblok extends HTMLElement {
           </div>
           <div>
             <h3><strong>Samenwerken met bezorgdienst:</strong></h3>
-            <a href="#">
+            <a href="mailto:info@bezorgdienst.nl?subject=Restaurant%20aanmelden">
               <p class="info-p">
                 <span class="w3-tag">Je restaurant toevoegen</span>
               </p></a
             >
-            <a href="#">
+            <a href="mailto:info@bezorgdienst.nl?subject=Bezorger%20aanmelden">
               <p class="info-p">
                 <span class="w3-tag">Aanmelden als bezorger</span>
               </p></a
