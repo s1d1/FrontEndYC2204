@@ -197,7 +197,7 @@ window.statusAnnuleren = function (bestelid) {
                 console.log("statusAnnuleren(): Success");
             }
             else {
-                alert("statusAnnuleren(): Failed");
+                alert("Het is niet gelukt om de bestelling te annuleren. Je kan alleen annuleren wanneer de bestelling nog niet is geaccepteerd.");
 
             }
 
@@ -235,7 +235,7 @@ window.statusBereiden = function (bestelid) {
                 console.log("statusBereiden(): Success");
             }
             else {
-                alert("statusBereiden(): Failed");
+                alert("Het is niet gelukt om de bestelling te accepteren. Waarschijnlijk heeft u hem al geaccepteerd of de bestelling is reeds geannuleerd.");
             }
 
 
@@ -269,7 +269,7 @@ window.statusReady = function (bestelid) {
                 koppelBezorger(bestelid); // Nested zodat je niet een bezorger kan toewijzen zonder dat de bestelling ook op Ready wordt gezet
             }
             else {
-                alert("statusReady(): Failed");
+                alert("Het is niet gelukt om de bestelling op ‘ready’ te zetten. Wellicht is hij al geannuleerd.");
             }
 
 
