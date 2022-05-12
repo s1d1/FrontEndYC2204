@@ -8,19 +8,21 @@ const restaurantid = parseInt(urlParams.get("id"), 10);
 // TEMPLATE: gerechtenitems
 function template_gerecht(gerecht) {
     return `
-    <li class="flex-item">
+    <li class="flex listitem">
         <div>
-            <p>Naam: ${gerecht.naam}</p>
-            <p>Prijs: € ${gerecht.prijs}</p>
-            <p>IMG-url: ${gerecht.afbeelding}</p>
+            <p class="gerecht_aanpas bold">${gerecht.naam}</p>
+            <p class="gerecht_aanpas"><span class="w3-text-grey"> Prijs: </span> € ${gerecht.prijs}</p>
+            <p class="gerecht_aanpas_URL"><span class="w3-text-grey">IMG-url: </span> ${gerecht.afbeelding}</p>
         </div>
 
-        <div>
+        <div class="image-box-aanpassen">
             <img src=${gerecht.afbeelding}>
         </div> 
-        <button onclick="deleteGerecht(${gerecht.id})">
-            Verwijderen
-        </button> 
+        <div class="verwijder-container">
+            <button class="w3-button verwijderen" onclick="deleteGerecht(${gerecht.id})">
+                Verwijderen
+            </button> 
+        </div>
 
     </li>`
 
@@ -29,9 +31,6 @@ function template_gerecht(gerecht) {
 //FUNCTIE: gerecht verwijderen
 
 window.deleteGerecht = function (gerechtid) {
-    console.log("Hallo dit is deleteGerecht()");
-
-   // const url = 'http://localhost:8080/gerechtverwijderen/' +  gerechtid;
     const url = 'http://backendyc2204bezorging.azurewebsites.net/gerechtverwijderen/' +  gerechtid;
 
     const options = {
@@ -71,46 +70,10 @@ fetch("https://backendyc2204bezorging.azurewebsites.net/toonmenu/" + restauranti
     })
 
 
-
-// FUNCTIE: testpost met fetch
-// referentie: https://stackoverflow.com/questions/39565706/post-request-with-fetch-api#39565776
-
-window.testPost = function () { // de functie testPost wordt hier gedefinieerd via window-object om het globaal te maken. 
-    //Hij wordt geactiveerd met onclick op button.
-    console.log("Hallo dit is testPost()");
-
-    const url = 'http://backendyc2204bezorging.azurewebsites.net/gerechttoevoegen/' + restaurantid;
-
-    const nieuwGerecht = {
-        "naam": "Testaardappel9",
-        "prijs": 999,
-        "afbeelding": "https://cipotato.org/wp-content/uploads/2020/03/potatoes.jpg"
-    };
-
-    const options = {
-        method: 'POST',
-        body: JSON.stringify(nieuwGerecht),
-        headers: {
-            'Content-Type': 'application/json'
-        },
-    };
-
-
-    console.log(nieuwGerecht)
-    fetch(url, options)
-        .then(response => console.log(response))
-
-};
-
 // FUNCTIE: formulierdata posten met fetch
 // referentie: https://code-boxx.com/post-form-data-javascript-fetch/#sec-post
 
 window.sendData = function () {
-    //e.preventDefault();
-
-
-
-
     // A GET FORM DATA
     let rawData = new FormData();
     rawData.append("naam", document.getElementById("gerechtnaam").value);
@@ -120,10 +83,6 @@ window.sendData = function () {
     // snippet om fordata te converteren in JSON
     const data = {};
     rawData.forEach((value, key) => (data[key] = value));
-    console.log(data);
-
-
-
 
     const url = 'http://backendyc2204bezorging.azurewebsites.net/gerechttoevoegen/' + restaurantid;
 
@@ -137,8 +96,6 @@ window.sendData = function () {
     // B INIT FETCH POST
     fetch(url, options)
         .then((response) => console.log(response))
-
-
     return false;
 }
 
