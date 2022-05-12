@@ -41,6 +41,8 @@ fetch("https://backendyc2204bezorging.azurewebsites.net/geefbestellingenvanres/"
         alleBezorgers();
     })
 
+
+
 // TEMPLATE: bestellingitems, bevat ook knoppen voor status wijzigen en bezorger koppelen
 function template_bestelling(bestelling, bestellingInhoud, stts_view, bzgr_view) {
 
@@ -78,16 +80,16 @@ function template_bestelling(bestelling, bestellingInhoud, stts_view, bzgr_view)
 
 
        
-    <button button type="button" onclick="statusAnnuleren(${bestelling.id})">
+    <button button type="button" onclick="statusAnnuleren(${bestelling.id}, ${bestelling.status})">
     Bestelling annuleren
     </button>
     
-    <button button type="button" onclick="statusBereiden(${bestelling.id})">
+    <button button type="button" onclick="statusBereiden(${bestelling.id}, ${bestelling.status})">
     Bestelling accepteren/bereiden
     </button>
-    <form id="form-bezorger-koppelen" onsubmit="return statusReady(${bestelling.id})">
+    <form id="form-bezorger-koppelen" onsubmit="return statusReady(${bestelling.id}, ${bestelling.status}, bezorger_${bestelling.id})">
     <label>Kies bezorger:</label>
-    <select class="bezorger_dropdown" id="bezorger">
+    <select class="bezorger_dropdown" id="bezorger_${bestelling.id}">
     </select>
     <input type="submit" value="Bestelling klaar / bezorger toewijzen">
     </form>
@@ -162,6 +164,25 @@ function setStatus(bestelling) {
         return 'Geannuleerd'
     }
 }
+
+// FUNCTIE: status van bestelling ophalen (werkt momenteel nog niet, andere methode gebruikt.)
+window.statusBestelling = function (bestelid) {
+
+    let bestelstatus = "";
+    console.log("Initieel:" + bestelstatus);
+
+    fetch("https://backendyc2204bezorging.azurewebsites.net/geefbestelling/" + bestelid)
+        .then((response) => response.json())
+        .then((bestelling) => {
+            bestelstatus = bestelling.status;
+            console.log("statusBestelling() return 1: " + bestelstatus) // VRAAG: Hier heeft hij wél de geüpdate bestelstatus.
+         //   return bestelstatus; // (de return werkt niet, hij blijft ‘undefined’.)
+    
+           
+        })
+        console.log(bestelstatus) // VRAAG: Maar heeft hij niet meer de geüpdate bestelstatus dus níet meer. Hoe kan dat??
+       
+    }
     
 
 
@@ -179,9 +200,13 @@ function template_bezorger(bezorger) {
 
 // FUNCTIES: voor het wijzigen van de status van de bestellingen.
 
-window.statusAnnuleren = function (bestelid) {
+window.statusAnnuleren = function (bestelid, bestelstatus) {
     console.log("Hallo, dit is statusAnnuleren()")
     let pathvariable = bestelid;
+    console.log("Bestelid:" + bestelid)
+    console.log("Huidige bestelstatus:" + bestelstatus)
+
+    
 
     const url = 'https://backendyc2204bezorging.azurewebsites.net/setstatus/' + pathvariable + '/4';
 
@@ -189,23 +214,34 @@ window.statusAnnuleren = function (bestelid) {
         method: 'POST',
 
     };
-    // B INIT FETCH POST
+    //B INIT FETCH POST
     fetch(url, options)
         .then((response) => response.json())
         .then((result) => {
             if (result.result == true) {
                 console.log("statusAnnuleren(): Success");
+                alert(`Je hebt bestelling #${bestelid} geannuleerd.`)
             }
             else {
-                alert("Het is niet gelukt om de bestelling te annuleren. Je kan alleen annuleren wanneer de bestelling nog niet is geaccepteerd.");
+                if (bestelstatus == 4) {
+                    alert("De bestelling is al geannuleerd.");
+                }
+                else if (bestelstatus == 1) {
+                    alert("Je kan een al geaccepteerde bestelling niet meer annuleren.");
+                }
+
+                else if (bestelstatus == 2) {
+                    alert("Je kan een bestelling die al klaargemaakt is niet meer annuleren.");
+                }
+                else {
+                    alert("De bestelling kan niet geannuleerd worden. (Onbekende reden).");
+                   
+                }
 
             }
 
 
-        }
-
-
-        )
+        })
 
 
     return false;
@@ -213,7 +249,7 @@ window.statusAnnuleren = function (bestelid) {
 }
 
 
-window.statusBereiden = function (bestelid) {
+window.statusBereiden = function (bestelid, bestelstatus) {
     console.log("Hallo, dit is statusBereiden")
 
     let pathvariable = bestelid;
@@ -233,21 +269,33 @@ window.statusBereiden = function (bestelid) {
             console.log(result);
             if (result.result == true) {
                 console.log("statusBereiden(): Success");
+                alert(`Je hebt bestelling #${bestelid} geannuleerd.`)
             }
             else {
-                alert("Het is niet gelukt om de bestelling te accepteren. Waarschijnlijk heeft u hem al geaccepteerd of de bestelling is reeds geannuleerd.");
+                if (bestelstatus == 4) {
+                    alert("De bestelling is al geannuleerd.");
+                }
+                else if (bestelstatus == 1) {
+                    alert("Je kan een al geaccepteerde bestelling niet meer annuleren.");
+                }
+
+                else if (bestelstatus == 2) {
+                    alert("Je kan een bestelling die al klaargemaakt is niet meer annuleren.");
+                }
+                else {
+                    alert("De bestelling kan niet geannuleerd worden. (Onbekende reden).");
+                   
+                }
+
             }
-
-
-        }
-        )
+        })
 
 
     return false;
 
 }
 
-window.statusReady = function (bestelid) {
+window.statusReady = function (bestelid, bestelstatus, formid) {
     console.log("Hallo, dit is statusReady()")
 
     let pathvariable = bestelid;
@@ -266,10 +314,13 @@ window.statusReady = function (bestelid) {
         .then((result) => {
             if (result.result == true) {
                 console.log("statusReady(): success!");
-                koppelBezorger(bestelid); // Nested zodat je niet een bezorger kan toewijzen zonder dat de bestelling ook op Ready wordt gezet
+                koppelBezorger(bestelid, formid); // Nested zodat je niet een bezorger kan toewijzen zonder dat de bestelling ook op Ready wordt gezet
             }
             else {
+                console.log(bestelStatus(bestelid))
+
                 alert("Het is niet gelukt om de bestelling op ‘ready’ te zetten. Wellicht is hij al geannuleerd.");
+
             }
 
 
@@ -284,10 +335,10 @@ window.statusReady = function (bestelid) {
 
 // FUNCTIE: geselecteerde bezorger met FETCH PUT koppelen aan bestelling
 
-window.koppelBezorger = function (bestelid) {
+window.koppelBezorger = function (bestelid, formid) {
     // A GET FORM DATA
    
-   let bezorgerid = document.getElementById("bezorger").value;
+   let bezorgerid = document.getElementById(formid).value;
    console.log(bezorgerid);
    
    const url = 'http://backendyc2204bezorging.azurewebsites.net/bezorgeraanbestelling/' +  bestelid + '/' + bezorgerid;
